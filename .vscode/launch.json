@@ -3,6 +3,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "ManageApplication",
+      "request": "launch",
+      "mainClass": "com.claims.manage.ManageApplication",
+      "projectName": "manage"
+    },
+    {
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",
