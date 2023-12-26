@@ -41,6 +41,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     declarations: [],
     imports: [
         MatAutocompleteModule,
+        MatAutocompleteModule,
         MatBadgeModule,
         MatBottomSheetModule,
         MatButtonModule,
