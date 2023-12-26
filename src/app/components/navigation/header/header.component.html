@@ -1,0 +1,35 @@
+  <mat-toolbar color="primary" class="mat-elevation-z6" >
+    <span class="example-spacer1"></span>
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span routerLink="/"> Claims Management</span>
+    <span class="example-spacer"></span>
+      <button mat-button routerLink="/login">Login</button>
+      <button mat-button routerLink="/signup">Register</button>
+    
+  </mat-toolbar>
+  <mat-drawer-container class="example-container">
+    <mat-drawer #drawer opened="true" mode="side" position="start" style="position: fixed;">
+      <mat-nav-list>
+        <mat-list-item routerLink="/home">
+          <button mat-button ><mat-icon>home</mat-icon>Home</button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button><mat-icon>Dashboard</mat-icon>Dashboard</button>
+        </mat-list-item>
+        <mat-list-item routerLink="/insurances">
+          <button mat-button ><mat-icon>Dashboard</mat-icon>Insurances</button>
+        </mat-list-item>
+        <mat-list-item routerLink="/claimApplication">
+          <button mat-button ><mat-icon>Dashboard</mat-icon>Apply for Claim</button>
+        </mat-list-item>
+        <mat-list-item  routerLink="/insuranceApplication">
+          <button mat-button ><mat-icon>Dashboard</mat-icon>Buy new Insurance</button>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content >
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>

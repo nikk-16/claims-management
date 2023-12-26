@@ -1,0 +1,38 @@
+
+<div class="">
+    <mat-card class="d-flex  justify-content-center align-items-center">
+      <form [formGroup]="this.form">
+        <h2>Sign Up</h2>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="username" formControlName="username">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Mobile Number</mat-label>
+          <input matInput placeholder="mobile number" formControlName="mobile">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="Email" formControlName="email">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="Password" formControlName="password">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Confirm Password</mat-label>
+          <input matInput type="password" placeholder="Password" formControlName="confirmPassword">
+          <!-- @if (this.form.errors?.passwordMismatch ) {
+            <mat-error>Password and confirm password aren't matching</mat-error>
+          } -->
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="signUp()">Register</button>
+        <p><a routerLink="/login">Already have an account? Login</a></p>
+      </form>
+    </mat-card>
+  </div>
