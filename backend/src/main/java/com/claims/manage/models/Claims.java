@@ -9,11 +9,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Claims {
   @Id
   private String id;
-  private String userId;
+  private String name;
   private Double amount;
   private String insuranceId;
-
   private String type;
-  private 
+  private String reason;
+  private String estimate;
+  private String releasedAmount;
+
   
 }
