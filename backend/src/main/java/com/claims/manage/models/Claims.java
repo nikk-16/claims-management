@@ -12,5 +12,8 @@ public class Claims {
   private String userId;
   private Double amount;
   private String insuranceId;
+
+  private String type;
+  private 
   
 }

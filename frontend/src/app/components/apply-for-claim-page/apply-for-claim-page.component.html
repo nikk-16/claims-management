@@ -1,0 +1,36 @@
+<h2 class="text-center my-3">Claim Request Application</h2>
+<div [formGroup]="form" class="text-center mb-4" >
+    <mat-form-field>
+        <mat-label>Insurance policy no.</mat-label>
+        <input matInput placeholder="enter policy number here" formControlName="policyNo">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Policy Holder Name</mat-label>
+        <input type="text" matInput placeholder="enter policy holder name here" formControlName="name">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Insurance Type</mat-label>
+        <mat-select value="16px" formControlName="insuranceType">
+            <mat-option value="health">Health</mat-option>
+            <mat-option value="vehicle">Vehicle</mat-option>
+            <mat-option value="property">Property</mat-option>
+            <mat-option value="life">Life</mat-option>
+            <mat-option value="travel">Travel</mat-option>
+          </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Claim reason</mat-label>
+        <textarea matInput formControlName="claimReason" placeholder="explain reason for claim"></textarea>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Estimated Amount</mat-label>
+        <input type="number" matInput formControlName="estimatedAmount" >
+    </mat-form-field>
+    <br>
+    <button class="btn btn-primary" (click)="claimRequest()" [disabled]="form.invalid">Submit claim</button>
+</div>
+
