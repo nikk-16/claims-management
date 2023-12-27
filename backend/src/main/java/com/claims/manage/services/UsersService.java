@@ -26,19 +26,14 @@ public class UsersService {
   }
 
   public String login(String username, String password){
-//    Optional<Users> user = usersRepository.findUsersByUsername(username);
-//    if(user.isPresent()){
-//      Users us = user.get();
-//      return us.getPassword().equals(password)?"Login successful":"Invalid credentials";
-//    }
-//    else{
-//      return "User does not exist";
+    return usersRepository.findAll().stream()
+            .filter(u -> u.getUsername().equals(username))
+            .findFirst()
+            .map(u -> u.getPassword().equals(password) ? "Login successful" : "Invalid credentials")
+            .orElse("User does not exist");
 
-      return usersRepository.findUsersByUsername(username)
-              .map(u -> u.getPassword().equals(password) ? "Login successful" : "Invalid credentials")
-              .orElse("User does not exist");
-
+//      return usersRepository.findUsersByUsername(username)
+//              .map(u -> u.getPassword().equals(password) ? "Login successful" : "Invalid credentials")
+//              .orElse("User does not exist");
   }
-
-
 }
