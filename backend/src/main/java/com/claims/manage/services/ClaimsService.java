@@ -26,6 +26,7 @@ public class ClaimsService {
 //    claims.setReason(claim.getClaimReason());
 //    claims.setAmount(claim.getEstimatedAmount());
 //    claims.setStatus("Applied");
+//      return claimsRepository.save(claims);
 
     return Optional.ofNullable(claim)
             .map(c -> {
@@ -35,7 +36,15 @@ public class ClaimsService {
             })
             .orElseThrow(() -> new IllegalArgumentException("Claim cannot be null"));
 
-
+//      return Optional.ofNullable(claim)
+//              .map(c -> {
+//                  System.out.println("Claim details: " + c.toString()); // Add a toString method in claim class
+//                  Claims claims = new Claims(c.getName(), c.getInsuranceType(), c.getClaimReason(), c.getEstimatedAmount());
+//                  claims.setStatus("Applied");
+//                  System.out.println("Saving claim: " + claims.toString()); // And also in Claims class
+//                  return claimsRepository.save(claims);
+//              })
+//              .orElseThrow(() -> new IllegalArgumentException("Claim cannot be null"));
 
   }
 }

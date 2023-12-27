@@ -22,7 +22,10 @@ public class Claims {
   private String status;
 
   public Claims(String name, String insuranceType, String claimReason, Double estimatedAmount) {
-
+    this.name = name;
+    this.type = insuranceType;
+    this.reason = claimReason;
+    this.estimate = estimatedAmount;
   }
 
   public String getStatus() {
