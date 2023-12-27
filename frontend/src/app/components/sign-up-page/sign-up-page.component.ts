@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-sign-up-page',
@@ -9,7 +11,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn,
 export class SignUpPageComponent {
   form:any
   flag:boolean=true;
-  constructor(private fb:FormBuilder){
+  constructor(private fb:FormBuilder,private userService:UsersService,private router:Router){
     this.form=this.fb.group({
       username:['',Validators.required],
       mobile:['',Validators.required],
@@ -36,8 +38,16 @@ export class SignUpPageComponent {
   }
 
   signUp(){
-    console.log("user added successfully");
-    console.log(this.form.value);
+    const tempUser={
+      username:this.form.value.username,
+      email:this.form.value.email,
+      mobile:this.form.value.mobile,
+      password:this.form.value.password
+    }
+    this.userService.signUp(tempUser).subscribe(response=>{
+      localStorage.setItem('username',this.form.value.username);
+      this.router.navigate(['/home']);
+    })
   }
 
 }

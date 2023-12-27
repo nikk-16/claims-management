@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-login-page',
@@ -10,14 +11,23 @@ import { Router } from '@angular/router';
 export class LoginPageComponent {
 
   form:any;
-  constructor(private fb:FormBuilder,private router:Router){
+  constructor(private fb:FormBuilder,private router:Router,private userService:UsersService){
     this.form=this.fb.group({
-      "email":["",[Validators.required,Validators.email]],
+      "username":["",[Validators.required]],
       "password":["",Validators.required]
     })
   }
   login(){
-    console.log(this.form.value);
-    this.router.navigate([''])
+   
+    this.userService.login(this.form.value.username,this.form.value.password).subscribe(response=>{
+      if(response=="Login successful"){
+        localStorage.setItem('username',this.form.value.username);
+        this.router.navigate(['/home']);
+      }
+      else{
+        alert("user details invalid");
+      }
+    });
+
   }
 }
