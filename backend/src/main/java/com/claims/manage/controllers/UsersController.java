@@ -7,11 +7,13 @@ import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
 import static org.springframework.http.ResponseEntity.ok;
 
+@CrossOrigin("*")
 @RestController
 @RequiredArgsConstructor
 public class UsersController {

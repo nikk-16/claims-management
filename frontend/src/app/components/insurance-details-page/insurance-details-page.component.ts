@@ -9,7 +9,7 @@ import { InsurancesService } from 'src/app/services/insurances.service';
 })
 export class InsuranceDetailsPageComponent implements OnInit{
   insurances:any=[];
-  displayedColumns: string[] = ['id', 'userid', 'type','startDate'];
+  displayedColumns: string[] = ['id', 'userid', 'type','amount','startDate','endDate','maxClaim'];
   dataSource = this.insurances;
   constructor(private insuranceService:InsurancesService){
     console.log("heloo from insurace")
