@@ -6,19 +6,21 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit,AfterViewInit{
-  username:string|any;
- constructor(private router:Router){}
-  ngOnInit(){
-    if(localStorage.getItem('username')!=null){
-      this.username=localStorage.getItem('username');
-    }
+export class HeaderComponent implements OnInit, AfterViewInit {
+  username: string | any;
+  constructor(private router: Router) { }
+  ngOnInit() {
+    this.router.events.subscribe((val: any) => {
+      if (localStorage.getItem('username') != null) {
+        this.username = localStorage.getItem('username');
+      }
+    })
   }
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     //window.location.reload();
   }
-  logOut(){
-    localStorage.setItem('username','');
+  logOut() {
+    localStorage.setItem('username', '');
     window.location.reload();
     this.router.navigate(['/']);
   }
