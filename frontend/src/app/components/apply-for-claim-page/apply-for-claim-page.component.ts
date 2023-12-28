@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ClaimsService } from 'src/app/services/claims.service';
 
 @Component({
   selector: 'app-apply-for-claim-page',
@@ -7,18 +8,20 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrl: './apply-for-claim-page.component.scss'
 })
 export class ApplyForClaimPageComponent {
-  form:any;
-  constructor(private fb:FormBuilder){
-    this.form=this.fb.group({
-      policyNo:['',Validators.required],
-      name:['',Validators.required],
-      insuranceType:['',Validators.required],
-      claimReason:['',Validators.required],
-      estimatedAmount:['',Validators.required]
+  form: any;
+  constructor(private fb: FormBuilder, private claimService: ClaimsService) {
+    this.form = this.fb.group({
+      policyNo: ['', Validators.required],
+      name: ['', Validators.required],
+      insuranceType: ['', Validators.required],
+      claimReason: ['', Validators.required],
+      estimatedAmount: ['', Validators.required]
     });
   }
 
-  claimRequest(){
-    console.log(this.form.value);
+  claimRequest() {
+    this.claimService.applyForClaims(this.form.value).subscribe(response => {
+      //console.log(response);
+    })
   }
 }

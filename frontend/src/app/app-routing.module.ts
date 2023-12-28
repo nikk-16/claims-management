@@ -7,6 +7,7 @@ import { ApplyForClaimPageComponent } from './components/apply-for-claim-page/ap
 import { ApplyForInsurancePageComponent } from './components/apply-for-insurance-page/apply-for-insurance-page.component';
 import { InsuranceDetailsPageComponent } from './components/insurance-details-page/insurance-details-page.component';
 import { ClaimsDetailsPageComponent } from './components/claims-details-page/claims-details-page.component';
+import { canActivate } from './routeguard';
 
 const routes: Routes = [
   {
@@ -28,15 +29,18 @@ const routes: Routes = [
   },
   {
     path:'claimApplication',
-    component:ApplyForClaimPageComponent
+    component:ApplyForClaimPageComponent,
+    canActivate:[canActivate]
   },
   {
     path:'insuranceApplication',
-    component:ApplyForInsurancePageComponent
+    component:ApplyForInsurancePageComponent,
+    canActivate:[canActivate]
   },
   {
     path:'insurances',
-    component:InsuranceDetailsPageComponent
+    component:InsuranceDetailsPageComponent,
+    canActivate:[canActivate]
   },
   {
     path:'claims',
