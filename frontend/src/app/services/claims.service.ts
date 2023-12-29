@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class ClaimsService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
+  private url="http://localhost:8080/claims";
+  applyForClaims(claim:any){
+    return this.http.post(`${this.url}/applyClaim`,claim,{responseType:"json"});
+  }
 }

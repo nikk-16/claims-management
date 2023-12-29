@@ -22,6 +22,7 @@ export class LoginPageComponent {
     this.userService.login(this.form.value.username,this.form.value.password).subscribe(response=>{
       if(response=="Login successful"){
         localStorage.setItem('username',this.form.value.username);
+        this.userService.isLoggedin=true;
         this.router.navigate(['/home']);
       }
       else{

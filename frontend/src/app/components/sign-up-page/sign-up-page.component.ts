@@ -46,6 +46,7 @@ export class SignUpPageComponent {
     }
     this.userService.signUp(tempUser).subscribe(response=>{
       localStorage.setItem('username',this.form.value.username);
+      this.userService.isLoggedin=true;
       this.router.navigate(['/home']);
     })
   }
