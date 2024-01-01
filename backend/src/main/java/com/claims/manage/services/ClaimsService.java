@@ -27,6 +27,7 @@ public class ClaimsService {
 //    claims.setAmount(claim.getEstimatedAmount());
 //    claims.setStatus("Applied");
 //      return claimsRepository.save(claims);
+      System.out.println("Apllied");
 
     return Optional.ofNullable(claim)
             .map(c -> {

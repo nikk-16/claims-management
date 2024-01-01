@@ -29,7 +29,7 @@ public class UsersService {
     return usersRepository.findAll().stream()
             .filter(u -> u.getUsername().equals(username))
             .findFirst()
-            .map(u -> u.getPassword().equals(password) ? "Login successful" : "Invalid credentials")
+            .map(u -> u.getPassword().equals(password) ? "Login successful! Welcome " + username : "Invalid credentials")
             .orElse("User does not exist");
 
 //      return usersRepository.findUsersByUsername(username)

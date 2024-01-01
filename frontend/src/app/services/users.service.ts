@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
 export class UsersService implements OnInit{
   private url = "http://localhost:8080";
   isLoggedin:boolean=false;
+  token:String = "ClaimsInterceptor";
   constructor(private http: HttpClient,private router:Router) { }
   ngOnInit(){
     // this.router.events.subscribe((val: any) => {
@@ -38,11 +40,13 @@ export class UsersService implements OnInit{
 
   login(username: string, password: string) {
     return this.http.get(`http://localhost:8080/login`, {
-      responseType: 'text',
-      params: {
-        username: username,
-        password: password
-      }
-    })
+    responseType: 'text',
+    params: {
+      username: username,
+      password: password
+    }
+  }).pipe(tap(token => {
+    localStorage.setItem('token', token);
+  }));
   }
 }
