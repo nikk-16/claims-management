@@ -9,14 +9,19 @@ import { InsurancesService } from 'src/app/services/insurances.service';
 })
 export class InsuranceDetailsPageComponent implements OnInit{
   insurances:any=[];
-  displayedColumns: string[] = ['id', 'userid', 'type','amount','startDate','endDate','maxClaim'];
-  dataSource = this.insurances;
-  constructor(private insuranceService:InsurancesService){
-    console.log("heloo from insurace")
+  username:string|any;
+  displayedColumns: string[] = ['id', 'username', 'type','amount','startDate','endDate','maxClaim'];
+ constructor(private insuranceService:InsurancesService){
+    this.username=localStorage.getItem('username');
+    this.insurances=this.insuranceService.insurances;
+  
   }
   ngOnInit(){
-    this.insurances=this.insuranceService.insurances;
-    this.dataSource=this.insurances;
+    this.insuranceService.getAllInsurancesByUsername(this.username).subscribe(response=>{
+      this.insurances=response
+    });
+   
+   
   }
 
 }

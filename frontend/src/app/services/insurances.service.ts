@@ -1,8 +1,9 @@
 
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 interface insurance{
   id:string,
-  userid:string,
+  username:string,
   type:string,
   amount:number,
   startDate:Date,
@@ -13,11 +14,11 @@ interface insurance{
   providedIn: 'root'
 })
 export class InsurancesService {
-
-  constructor() { }
+  constructor(private http:HttpClient) { }
+  private url="http://localhost:8080/insurances";
   insurances:insurance[]=[{
     id:"123456",
-    userid:"456789",
+    username:"456789",
     type:"health",
     amount:100000,
     startDate:new Date('1/1/2003'),
@@ -26,7 +27,7 @@ export class InsurancesService {
   },
   {
     id:"123457",
-    userid:"456789",
+    username:"456789",
     type:"vehicle",
     amount:234560,
     startDate:new Date('1/1/2003'),
@@ -34,4 +35,12 @@ export class InsurancesService {
     maxClaim:567889
 
   }]
+  getAllInsurancesByUsername(username:string){
+    return this.http.get<any>(`${this.url}/getInsurancesByUsername/${username}`);
+  }
+
+  applyForInsurance(newInsurance:any){
+    return this.http.post(`${this.url}/buy_insurance`,newInsurance,{responseType:"json"});
+  }
+
 }
