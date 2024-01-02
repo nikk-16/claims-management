@@ -15,6 +15,7 @@ import { InsuranceDetailsPageComponent } from './components/insurance-details-pa
 import { ClaimsDetailsPageComponent } from './components/claims-details-page/claims-details-page.component';
 import { ApplyForInsurancePageComponent } from './components/apply-for-insurance-page/apply-for-insurance-page.component';
 import { ClaimsInterceptor } from './claims.interceptor';
+import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ClaimsInterceptor } from './claims.interceptor';
         ApplyForClaimPageComponent,
         InsuranceDetailsPageComponent,
         ClaimsDetailsPageComponent,
-        ApplyForInsurancePageComponent
+        ApplyForInsurancePageComponent,
+        SidebarComponent
     ],
     providers: [{ provide: HTTP_INTERCEPTORS, useClass: ClaimsInterceptor, multi: true }],
     bootstrap: [AppComponent],
