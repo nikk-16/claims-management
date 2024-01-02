@@ -1,4 +1,31 @@
+<!-- <app-header></app-header> -->
+
+<!-- 
+
+<div class="wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="main">
+       <app-header></app-header>
+       <main class="content">
+        <div class="container-fluid p-0">
+            <div class="row">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+       </main>
+    </div>
+</div> -->
+
+
+
 <app-header></app-header>
-
-
-
+<div class="d-flex container1">
+  <div class="al-left">
+      <app-sidebar *ngIf="username.length>0"></app-sidebar>
+  </div>
+    <div class="al-right">
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
