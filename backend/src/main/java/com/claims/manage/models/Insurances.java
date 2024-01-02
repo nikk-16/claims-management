@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 @Document(collection = "insurance")
-public class Insurance {
+public class Insurances {
     @Id
     private String id;
     private String username;

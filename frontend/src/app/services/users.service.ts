@@ -46,6 +46,7 @@ export class UsersService implements OnInit{
     }
   }).pipe(tap(token => {
     localStorage.setItem('token', token);
+    localStorage.setItem("username", username);
   }));
   }
 }
