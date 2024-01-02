@@ -1,5 +1,7 @@
 
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 interface insurance{
   id:string,
   userid:string,
@@ -14,7 +16,16 @@ interface insurance{
 })
 export class InsurancesService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+  private url = "http://localhost:8080";
+  // insurances:insurance[] | undefined;
+  
+  // getInsuranceByUser():insurance[] | undefined {
+  //   this.http.get<any>(`${this.url}/getAll`).subscribe((data:any)=>{
+  //     this.insurances = data;
+  //   });
+  //   return this.insurances;
+  // }
   insurances:insurance[]=[{
     id:"123456",
     userid:"456789",
