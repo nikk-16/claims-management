@@ -1,1 +1,45 @@
-<p>apply-for-insurance-page works!</p>
+<h2 class="text-center my-3">New Insurance Application</h2>
+<div [formGroup]="form" class="text-center mb-4">
+    <mat-form-field>
+        <mat-label>Policy Holder Name</mat-label>
+        <input type="text" matInput placeholder="enter policy holder name here" formControlName="username">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Insurance Type</mat-label>
+        <mat-select value="16px" formControlName="type">
+            <mat-option value="health">Health</mat-option>
+            <mat-option value="vehicle">Vehicle</mat-option>
+            <mat-option value="property">Property</mat-option>
+            <mat-option value="life">Life</mat-option>
+            <mat-option value="travel">Travel</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>amount</mat-label>
+        <input type="number" matInput formControlName="amount">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" class="example-form-field">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="rangePicker">
+            <input matStartDate placeholder="Start date" formControlName="startDate" [min]="today">
+            <input matEndDate placeholder="End date" formControlName="endDate">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+        <mat-date-range-picker #rangePicker>
+            <mat-date-range-picker-actions>
+                <button mat-button matDateRangePickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+            </mat-date-range-picker-actions>
+        </mat-date-range-picker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Estimated Max Claim amount</mat-label>
+        <input type="number" matInput formControlName="maxClaim">
+    </mat-form-field>
+    <br>
+    <button class="btn btn-primary" (click)="insuranceRequest()" [disabled]="form.invalid">Submit</button>
+</div>

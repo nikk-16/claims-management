@@ -9,7 +9,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class HeaderComponent implements OnInit {
   username: string | any;
-  constructor(private router: Router, private userService: UsersService) { }
+  constructor(private router: Router) { }
   ngOnInit() {
     this.router.events.subscribe((val: any) => {
       if (localStorage.getItem('username') != null) {
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     localStorage.setItem('username', '');
-    this.userService.isLoggedin = false;
+    localStorage.setItem('token', '');
     this.router.navigate(['/']);
   }
 }

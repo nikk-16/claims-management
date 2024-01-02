@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
   <span class="example-spacer1"></span>
-  <button mat-icon-button (click)="drawer.toggle()">
+  <button mat-icon-button (click)="drawer.toggle()" matTooltip="Main menu">
     <mat-icon>menu</mat-icon>
   </button>
   <span routerLink="/"> Claims Management</span>
@@ -10,7 +10,7 @@
     <button mat-button routerLink="/signup">Register</button>
   </ng-container>
   <ng-container *ngIf="username">
-    <button mat-button [matMenuTriggerFor]="menu">Hi,{{username}}</button>
+    <button mat-button [matMenuTriggerFor]="menu"  matTooltip="profile info">Hi,{{username}}</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item >My Claims</button>
       <button mat-menu-item (click)="logOut()">LogOut</button>
@@ -23,17 +23,14 @@
       <mat-list-item routerLink="/home">
         <button mat-button><mat-icon>home</mat-icon>Home</button>
       </mat-list-item>
-      <mat-list-item>
-        <button mat-button><mat-icon>Dashboard</mat-icon>Dashboard</button>
-      </mat-list-item>
       <mat-list-item routerLink="/insurances">
-        <button mat-button><mat-icon>Dashboard</mat-icon>Insurances</button>
+        <button mat-button><mat-icon>account_balance</mat-icon>Insurances</button>
       </mat-list-item>
       <mat-list-item routerLink="/claimApplication">
-        <button mat-button><mat-icon>Dashboard</mat-icon>Apply for Claim</button>
+        <button mat-button><mat-icon>input</mat-icon>Apply for Claim</button>
       </mat-list-item>
       <mat-list-item routerLink="/insuranceApplication">
-        <button mat-button><mat-icon>Dashboard</mat-icon>Buy new Insurance</button>
+        <button mat-button><mat-icon>trending_up</mat-icon>Buy new Insurance</button>
       </mat-list-item>
     </mat-nav-list>
   </mat-drawer>

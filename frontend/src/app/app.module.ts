@@ -10,7 +10,6 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { SignUpPageComponent } from './components/sign-up-page/sign-up-page.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { HeaderComponent } from './components/navigation/header/header.component';
-import { SidenavComponent } from './components/navigation/sidenav/sidenav.component';
 import { ApplyForClaimPageComponent } from './components/apply-for-claim-page/apply-for-claim-page.component';
 import { InsuranceDetailsPageComponent } from './components/insurance-details-page/insurance-details-page.component';
 import { ClaimsDetailsPageComponent } from './components/claims-details-page/claims-details-page.component';
@@ -25,7 +24,6 @@ import { ClaimsInterceptor } from './claims.interceptor';
         SignUpPageComponent,
         HomePageComponent,
         HeaderComponent,
-        SidenavComponent,
         ApplyForClaimPageComponent,
         InsuranceDetailsPageComponent,
         ClaimsDetailsPageComponent,

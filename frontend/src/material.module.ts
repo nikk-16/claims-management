@@ -36,6 +36,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
     declarations: [],
@@ -54,7 +55,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         MatDialogModule,
         MatDividerModule,
         MatExpansionModule,
-        
+        MatNativeDateModule,
         MatFormFieldModule,
     
         MatGridListModule,
@@ -96,7 +97,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         MatDialogModule,
         MatDividerModule,
         MatExpansionModule,
-        
+        MatNativeDateModule,
         MatFormFieldModule,
        
         MatGridListModule,

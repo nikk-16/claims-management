@@ -8,7 +8,6 @@ import { tap } from 'rxjs/operators';
 })
 export class UsersService implements OnInit{
   private url = "http://localhost:8080";
-  isLoggedin:boolean=false;
   token:String = "ClaimsInterceptor";
   constructor(private http: HttpClient,private router:Router) { }
   ngOnInit(){
