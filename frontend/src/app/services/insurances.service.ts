@@ -1,6 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 interface insurance{
   id:string,
   username:string,
@@ -14,8 +15,8 @@ interface insurance{
   providedIn: 'root'
 })
 export class InsurancesService {
-  constructor(private http:HttpClient) { }
-  private url="http://localhost:8080/insurances";
+
+  constructor() { }
   insurances:insurance[]=[{
     id:"123456",
     username:"456789",
