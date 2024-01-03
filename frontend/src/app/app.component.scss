@@ -3,3 +3,7 @@
     width: 100%;
     overflow-y: scroll;
 }
+:host{
+    height: 100%;
+    display: block;
+}
