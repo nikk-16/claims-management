@@ -1,9 +1,14 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
   <span class="example-spacer1"></span>
+<<<<<<< Updated upstream
   <button mat-icon-button  matTooltip="Main menu">
     <mat-icon>menu</mat-icon>
+=======
+  <button *ngIf="username" mat-icon-button  matTooltip="Main menu">
+    <mat-icon (click)="toggleSidebar()">menu</mat-icon>
+>>>>>>> Stashed changes
   </button>
-  <span routerLink="/"> Claims Management</span>
+  <span routerLink="/" class="app-logo"> Claims Management</span>
   <span class="example-spacer"></span>
   <ng-container *ngIf="!username">
     <button mat-button routerLink="/login">Login</button>

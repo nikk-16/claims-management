@@ -1,0 +1,24 @@
+.container{
+    margin-top: 40px;
+    .header{
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 600;
+        font-size: x-large;
+        
+    }
+    .claim-button{
+        background-color: #c6d4f5;
+    }
+    .card{
+        background-color: rgb(240, 246, 251);
+        margin-top: 35px;
+        cursor: pointer;
+    }
+    p{
+        font-size: larger;
+    }
+    span{
+        font-size: medium;
+    }
+
+}
