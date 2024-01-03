@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-header',
@@ -9,11 +8,9 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class HeaderComponent implements OnInit {
   username: string | any;
-  // sidebar:boolean = false;
- 
  
   constructor(private router: Router) { }
- 
+
   ngOnInit() {
     this.router.events.subscribe((val: any) => {
       if (localStorage.getItem('username') != null) {
@@ -21,7 +18,7 @@ export class HeaderComponent implements OnInit {
       }
     })
   }
- 
+
   logOut() {
     localStorage.setItem('username', '');
     localStorage.setItem('token', '');
