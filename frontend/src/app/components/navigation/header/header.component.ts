@@ -9,7 +9,11 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class HeaderComponent implements OnInit {
   username: string | any;
+  // sidebar:boolean = false;
+ 
+ 
   constructor(private router: Router) { }
+ 
   ngOnInit() {
     this.router.events.subscribe((val: any) => {
       if (localStorage.getItem('username') != null) {
@@ -17,10 +21,19 @@ export class HeaderComponent implements OnInit {
       }
     })
   }
-
+ 
   logOut() {
     localStorage.setItem('username', '');
     localStorage.setItem('token', '');
     this.router.navigate(['/']);
   }
+
+  // toggleSidebar(){
+  //   if(this.sidebar){
+  //     this.sidebar = false;
+  //   }
+  //   else{
+  //     this.sidebar = true;
+  //   }
+  // }
 }

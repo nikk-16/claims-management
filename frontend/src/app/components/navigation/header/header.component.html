@@ -1,21 +1,20 @@
-<mat-toolbar color="primary" class="mat-elevation-z6">
+<mat-toolbar color="primary" class="mat-elevation-z4">
   <span class="example-spacer1"></span>
-<<<<<<< Updated upstream
-  <button mat-icon-button  matTooltip="Main menu">
-    <mat-icon>menu</mat-icon>
-=======
-  <button *ngIf="username" mat-icon-button  matTooltip="Main menu">
+  <!-- <button mat-icon-button  matTooltip="Main menu">
     <mat-icon (click)="toggleSidebar()">menu</mat-icon>
->>>>>>> Stashed changes
+  </button> -->
+  <button *ngIf="username" mat-icon-button  matTooltip="Main menu">
+    <mat-icon>menu</mat-icon>
   </button>
-  <span routerLink="/" class="app-logo"> Claims Management</span>
+  <span routerLink="/"> Claims Management</span>
   <span class="example-spacer"></span>
   <ng-container *ngIf="!username">
     <button mat-button routerLink="/login">Login</button>
     <button mat-button routerLink="/signup">Register</button>
   </ng-container>
   <ng-container *ngIf="username">
-    <button mat-button [matMenuTriggerFor]="menu"  matTooltip="profile info">Hi,{{username}}</button>
+    <mat-icon>person</mat-icon>
+    <button mat-button [matMenuTriggerFor]="menu" matTooltip="profile info" class="dropdown-toggle">Hi,{{username}}</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item >My Claims</button>
       <button mat-menu-item (click)="logOut()">LogOut</button>

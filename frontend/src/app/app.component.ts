@@ -8,10 +8,13 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'claims-management';
-  username:string|any;
+  username:string|any="";
   constructor(private router:Router){
+    this.username=localStorage.getItem('username');  
+  }
+  ngOnInit(){
     this.router.events.subscribe((value:any)=>{
-      this.username=localStorage.getItem('username');
+      this.username=localStorage.getItem('username');  
     })
   }
 }
