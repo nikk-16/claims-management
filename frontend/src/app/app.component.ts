@@ -21,7 +21,7 @@ export class AppComponent implements OnInit{
     })
   }
   put(side:string){
-    console.error(side)
+    //console.error(side)
     this.side = !this.side;
   }
 }

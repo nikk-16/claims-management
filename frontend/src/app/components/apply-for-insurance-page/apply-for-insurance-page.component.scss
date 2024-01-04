@@ -1,4 +1,10 @@
-mat-form-field{
-    padding: 5px 0px 25px 2px;
-     width: 80%;
+.applyInsurance{
+    background-color: rgb(216, 233, 245);
+    .form{
+        mat-form-field{
+            padding: 5px 0px 25px 2px;
+             width: 80%;
+            
+        }
+    }
 }
