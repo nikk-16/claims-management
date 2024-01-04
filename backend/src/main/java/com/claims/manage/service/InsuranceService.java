@@ -1,7 +1,7 @@
-package com.claims.manage.services;
+package com.claims.manage.service;
 
-import com.claims.manage.models.Insurance;
-import com.claims.manage.repositories.InsuranceRepository;
+import com.claims.manage.domain.Insurance;
+import com.claims.manage.repository.InsuranceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

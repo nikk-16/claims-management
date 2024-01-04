@@ -2,12 +2,12 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
+import { usersUri } from '../constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService implements OnInit{
-  private url = "http://localhost:8080";
   token:String = "ClaimsInterceptor";
   constructor(private http: HttpClient,private router:Router) { }
   ngOnInit(){
@@ -22,23 +22,23 @@ export class UsersService implements OnInit{
   }
  
   getAllUsers() {
-    return this.http.get<any>(`${this.url}/getAll`);
+    return this.http.get<any>(`${usersUri}/getAll`);
   }
 
   getUserById(userId:string){
-    return this.http.get<any>(`${this.url}/${userId}`);
+    return this.http.get<any>(`${usersUri}/${userId}`);
   }
 
   signUp(userData:any){
-    return this.http.post(`${this.url}/signup`,userData,{responseType:"json"});
+    return this.http.post(`${usersUri}/signup`,userData,{responseType:"json"});
   }
 
   updateUser(userData:any){
-    return this.http.put(`${this.url}/update`,userData,{responseType:"json"});
+    return this.http.put(`${usersUri}/update`,userData,{responseType:"json"});
   }
 
   login(username: string, password: string) {
-    return this.http.get(`http://localhost:8080/login`, {
+    return this.http.get(`${usersUri}/login`, {
     responseType: 'text',
     params: {
       username: username,

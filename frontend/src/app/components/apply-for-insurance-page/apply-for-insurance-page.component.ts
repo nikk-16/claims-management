@@ -1,7 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { InsurancesService } from 'src/shared/services/insurances.service';
+import { InsurancesService } from 'src/app/services/insurances.service';
 
 @Component({
   selector: 'app-apply-for-insurance-page',

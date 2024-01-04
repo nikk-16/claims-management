@@ -14,7 +14,7 @@ import { ApplyForClaimPageComponent } from './components/apply-for-claim-page/ap
 import { InsuranceDetailsPageComponent } from './components/insurance-details-page/insurance-details-page.component';
 import { ClaimsDetailsPageComponent } from './components/claims-details-page/claims-details-page.component';
 import { ApplyForInsurancePageComponent } from './components/apply-for-insurance-page/apply-for-insurance-page.component';
-import { ClaimsInterceptor } from './claims.interceptor';
+import { ClaimsInterceptor } from './services/claims.interceptor';
 import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
 import { SharedModule } from 'src/shared/shared.module';
 import { InsuranceCardComponent } from 'src/shared/shared-components/insurance-card/insurance-card.component';

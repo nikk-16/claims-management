@@ -1,9 +1,9 @@
-package com.claims.manage.services;
+package com.claims.manage.service;
 
-import com.claims.manage.components.ApplyClaims;
-import com.claims.manage.models.Claims;
-import com.claims.manage.repositories.ClaimsRepository;
-import com.claims.manage.repositories.UsersRepository;
+import com.claims.manage.model.ApplyClaims;
+import com.claims.manage.domain.Claims;
+import com.claims.manage.repository.ClaimsRepository;
+import com.claims.manage.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

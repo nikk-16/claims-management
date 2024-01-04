@@ -1,22 +1,14 @@
-package com.claims.manage.components;
-
-import org.springframework.stereotype.Component;
+package com.claims.manage.model;
 
 import java.util.Date;
 
-@Component
 public class NewInsurance {
-    @Override
-    public String toString() {
-        return "NewInsurance{" +
-                "username='" + username + '\'' +
-                ", type='" + type + '\'' +
-                ", amount=" + amount +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", maxClaim=" + maxClaim +
-                '}';
-    }
+    private String username;
+    private String type;
+    private Double amount;
+    private Date startDate;
+    private Date endDate;
+    private Double maxClaim;
 
     public NewInsurance() {
     }
@@ -78,10 +70,15 @@ public class NewInsurance {
         this.maxClaim = maxClaim;
     }
 
-    private String username;
-    private String type;
-    private Double amount;
-    private Date startDate;
-    private Date endDate;
-    private Double maxClaim;
+    @Override
+    public String toString() {
+        return "NewInsurance{" +
+                "username='" + username + '\'' +
+                ", type='" + type + '\'' +
+                ", amount=" + amount +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", maxClaim=" + maxClaim +
+                '}';
+    }
 }

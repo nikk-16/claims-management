@@ -1,6 +1,6 @@
-package com.claims.manage.repositories;
+package com.claims.manage.repository;
 
-import com.claims.manage.models.Insurance;
+import com.claims.manage.domain.Insurance;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
