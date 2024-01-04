@@ -1,7 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { InsurancesService } from 'src/app/services/insurances.service';
+import { InsurancesService } from 'src/shared/services/insurances.service';
 
 @Component({
   selector: 'app-apply-for-insurance-page',
@@ -25,9 +25,12 @@ export class ApplyForInsurancePageComponent {
   }
 
   insuranceRequest() {
-    // this.insuranceService.applyForInsurance(this.form.value).subscribe(response => {
-    //   console.log(response);
-    // })
     console.log(this.form.value);
+    this.form.value.endDate = formatDate(`${this.form.value.endDate}`, 'yyyy-MM-dd', 'en');
+    console.log(formatDate(`${this.form.value.endDate}`, 'yyyy-MM-dd', 'en'));
+    console.error(this.form.value);
+    this.insuranceService.applyForInsurance(this.form.value).subscribe(response => {
+      console.log(response);
+    })
   }
 }

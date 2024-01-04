@@ -16,6 +16,9 @@ import { ClaimsDetailsPageComponent } from './components/claims-details-page/cla
 import { ApplyForInsurancePageComponent } from './components/apply-for-insurance-page/apply-for-insurance-page.component';
 import { ClaimsInterceptor } from './claims.interceptor';
 import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
+import { SharedModule } from 'src/shared/shared.module';
+import { InsuranceCardComponent } from 'src/shared/shared-components/insurance-card/insurance-card.component';
+import { ApplyClaimsCardComponent } from 'src/shared/shared-components/apply-claims-card/apply-claims-card.component';
 
 
 @NgModule({
@@ -29,7 +32,9 @@ import { SidebarComponent } from './components/navigation/sidebar/sidebar.compon
         InsuranceDetailsPageComponent,
         ClaimsDetailsPageComponent,
         ApplyForInsurancePageComponent,
-        SidebarComponent
+        SidebarComponent,
+        InsuranceCardComponent,
+        ApplyClaimsCardComponent
     ],
     providers: [{ provide: HTTP_INTERCEPTORS, useClass: ClaimsInterceptor, multi: true }],
     bootstrap: [AppComponent],
@@ -39,7 +44,8 @@ import { SidebarComponent } from './components/navigation/sidebar/sidebar.compon
         BrowserAnimationsModule,
         MaterialModule,
         FormsModule,
-        HttpClientModule 
+        HttpClientModule,
+        SharedModule
     ]
 })
 export class AppModule { }

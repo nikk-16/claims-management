@@ -1,5 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,10 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
+  // @Input() sidebar!: boolean;
+  @Output() showSidebar: EventEmitter<string> = new EventEmitter<string>();
   username: string | any;
- 
+  // side=this.sidebar;
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -25,12 +28,13 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  // toggleSidebar(){
-  //   if(this.sidebar){
-  //     this.sidebar = false;
-  //   }
-  //   else{
-  //     this.sidebar = true;
-  //   }
-  // }
+  toggleSidebar(){
+    // if(this.side){
+    //   this.side = false;
+    // }
+    // else{
+    //   this.side = true;
+    // }
+    this.showSidebar.emit("somedata");
+  }
 }

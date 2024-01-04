@@ -1,7 +1,7 @@
 package com.claims.manage.services;
 
-import com.claims.manage.models.Insurances;
-import com.claims.manage.repositories.InsurancesRepository;
+import com.claims.manage.models.Insurance;
+import com.claims.manage.repositories.InsuranceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,16 +10,17 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class InsuranceService {
-    private final InsurancesRepository insurancesRepository;
+    private final InsuranceRepository insuranceRepository;
 
-    public Insurances buyInsurance(Insurances insurance){
-        return insurancesRepository.save(insurance);
+    public Insurance buyInsurance(Insurance insurance){
+        System.out.println(insurance);
+        return insuranceRepository.save(insurance);
     }
 
-    public List<Insurances> getByUsername(String username) {
-        System.out.println(insurancesRepository.findAll());
+    public List<Insurance> getByUsername(String username) {
+        System.out.println(insuranceRepository.findAll());
 //        System.out.println(insuranceRepository.findByUsername(username));
-        System.out.println(insurancesRepository.findInsurancesByUsername(username));
-        return insurancesRepository.findInsurancesByUsername(username);
+        System.out.println(insuranceRepository.findInsurancesByUsername(username));
+        return insuranceRepository.findInsurancesByUsername(username);
     }
 }

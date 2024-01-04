@@ -1,10 +1,10 @@
-<app-header></app-header>
-<div class="d-flex" *ngIf="username.length>0" >
+<app-header (showSidebar) = "put($event)"></app-header>
+<div class="d-flex" *ngIf="username" >
     <div class="al-left">
-        <app-sidebar></app-sidebar>
+        <app-sidebar *ngIf="side"></app-sidebar>
     </div>
     <div class="al-right w-100">
-        <div class="container">
+        <div class="">
             <router-outlet></router-outlet>
         </div>
     </div>

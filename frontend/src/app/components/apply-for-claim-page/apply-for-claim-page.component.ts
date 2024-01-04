@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ClaimsService } from 'src/app/services/claims.service';
+import { ClaimsService } from 'src/shared/services/claims.service';
 
 @Component({
   selector: 'app-apply-for-claim-page',

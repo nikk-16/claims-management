@@ -3,8 +3,8 @@
   <!-- <button mat-icon-button  matTooltip="Main menu">
     <mat-icon (click)="toggleSidebar()">menu</mat-icon>
   </button> -->
-  <button *ngIf="username" mat-icon-button  matTooltip="Main menu">
-    <mat-icon>menu</mat-icon>
+  <button *ngIf="username" mat-icon-button  matTooltip="Main menu" (click)="toggleSidebar()">
+    <mat-icon >menu</mat-icon>
   </button>
   <span routerLink="/"> Claims Management</span>
   <span class="example-spacer"></span>
@@ -13,8 +13,8 @@
     <button mat-button routerLink="/signup">Register</button>
   </ng-container>
   <ng-container *ngIf="username">
-    <mat-icon>person</mat-icon>
-    <button mat-button [matMenuTriggerFor]="menu" matTooltip="profile info" class="dropdown-toggle">Hi,{{username}}</button>
+    
+    <button mat-button [matMenuTriggerFor]="menu" matTooltip="profile info" class="dropdown-toggle"><mat-icon>person</mat-icon> Hi, {{username}}</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item >My Claims</button>
       <button mat-menu-item (click)="logOut()">LogOut</button>

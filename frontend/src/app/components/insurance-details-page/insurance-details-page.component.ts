@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InsurancesService } from 'src/app/services/insurances.service';
+import { InsurancesService } from 'src/shared/services/insurances.service';
 
 
 @Component({
@@ -13,12 +13,17 @@ export class InsuranceDetailsPageComponent implements OnInit{
   displayedColumns: string[] = ['id', 'username', 'type','amount','startDate','endDate','maxClaim'];
  constructor(private insuranceService:InsurancesService){
     this.username=localStorage.getItem('username');
-    this.insurances=this.insuranceService.insurances;
+    // this.insuranceService.getAllInsurancesByUsername(this.username).subscribe(response=>{
+      //   this.insurances=response
+      //   console.log(response);
+    // });
   
   }
   ngOnInit(){
+    // this.insurances=this.insuranceService.insurances;
     this.insuranceService.getAllInsurancesByUsername(this.username).subscribe(response=>{
       this.insurances=response
+      console.log(response);
     });
    
    
