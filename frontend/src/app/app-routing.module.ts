@@ -8,6 +8,7 @@ import { ApplyForInsurancePageComponent } from './components/apply-for-insurance
 import { InsuranceDetailsPageComponent } from './components/insurance-details-page/insurance-details-page.component';
 import { ClaimsDetailsPageComponent } from './components/claims-details-page/claims-details-page.component';
 import { canActivate } from './routeguard';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
