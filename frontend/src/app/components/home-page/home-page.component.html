@@ -479,7 +479,8 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, cupiditate itaqu
     <hr>
     <div class="container">
         <h1>INSURANCES</h1>
-        <app-insurance-card></app-insurance-card>
+        <app-insurance-card *ngFor="let i of insurancePolicies" [insurancePolicy]="i"></app-insurance-card>
+        <br>
     </div>
 </div>
 <!-- <router-outlet></router-outlet> -->

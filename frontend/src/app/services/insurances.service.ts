@@ -1,17 +1,6 @@
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { insuranceUri } from '../constants';
-
-interface insurance{
-  id:string,
-  username:string,
-  type:string,
-  amount:number,
-  startDate:Date,
-  endDate:Date,
-  maxClaim:number
-}
 @Injectable({
   providedIn: 'root'
 })
@@ -35,7 +24,6 @@ export class InsurancesService {
   //   startDate:new Date('1/1/2003'),
   //   endDate:new Date('1/1/2013'),
   //   maxClaim:567889
-
   // }]
   getAllInsurancesByUsername(username:string){
     return this.http.get<any>(`${insuranceUri}/${username}`);

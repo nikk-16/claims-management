@@ -1,10 +1,10 @@
 package com.claims.manage.controller;
 
 import com.claims.manage.domain.InsurancePolicies;
-import com.claims.manage.domain.Users;
 import com.claims.manage.service.InsurancePoliciesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +14,7 @@ import java.util.List;
 
 import static org.springframework.http.ResponseEntity.ok;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/insurancepolicies")
 @RequiredArgsConstructor
