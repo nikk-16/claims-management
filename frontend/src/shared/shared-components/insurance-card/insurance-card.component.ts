@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { InsurancePolicies } from 'src/app/model/insurance-policies';
 
 @Component({
   selector: 'app-insurance-card',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './insurance-card.component.scss'
 })
 export class InsuranceCardComponent {
-
+ @Input()
+ insurancePolicy:InsurancePolicies|any;
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignUpPageComponent } from './components/sign-up-page/sign-up-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
@@ -7,7 +7,7 @@ import { ApplyForClaimPageComponent } from './components/apply-for-claim-page/ap
 import { ApplyForInsurancePageComponent } from './components/apply-for-insurance-page/apply-for-insurance-page.component';
 import { InsuranceDetailsPageComponent } from './components/insurance-details-page/insurance-details-page.component';
 import { ClaimsDetailsPageComponent } from './components/claims-details-page/claims-details-page.component';
-import { canActivate } from './routeguard';
+import { AuthGuard } from './services/auth.service';
 import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
@@ -31,21 +31,23 @@ const routes: Routes = [
   {
     path:'claimApplication',
     component:ApplyForClaimPageComponent,
-    canActivate:[canActivate]
+    canActivate:[AuthGuard]
+    
   },
   {
     path:'insuranceApplication',
     component:ApplyForInsurancePageComponent,
-    canActivate:[canActivate]
+    canActivate:[AuthGuard]
   },
   {
     path:'insurances',
     component:InsuranceDetailsPageComponent,
-    canActivate:[canActivate]
+    canActivate:[AuthGuard]
   },
   {
     path:'claims',
-    component:ClaimsDetailsPageComponent
+    component:ClaimsDetailsPageComponent,
+    canActivate:[AuthGuard]
   }
 ];
 

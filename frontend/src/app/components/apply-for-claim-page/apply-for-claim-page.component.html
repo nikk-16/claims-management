@@ -1,5 +1,6 @@
-<h2 class="text-center my-3">Claim Request Application</h2>
-<div [formGroup]="form" class="text-center mb-4">
+<div class="applyClaim py-3">
+<h2 class="text-center ">Claim Request Application</h2>
+<div [formGroup]="form" class="form text-center">
     <mat-form-field>
         <mat-label>Insurance policy no.</mat-label>
         <input matInput placeholder="enter policy number here" formControlName="policyNo">
@@ -33,4 +34,4 @@
     <br>
     <button class="btn btn-primary" (click)="claimRequest()" [disabled]="form.invalid">Submit claim</button>
 </div>
-
+</div>

@@ -23,22 +23,22 @@ public class UsersController {
 //  }
   @GetMapping("/{id}")
   private ResponseEntity<Users> getUserById(@PathVariable String id){
-    return ResponseEntity.ok(usersService.getById(id));
+    return ok(usersService.getById(id));
   }
 
   @GetMapping("/getAll")
   private ResponseEntity<List<Users>> getAllUsers(){
-    return ResponseEntity.ok(usersService.getAllUsers());
+    return ok(usersService.getAllUsers());
   }
 
   @PostMapping("/signup")
   private ResponseEntity<Users> addUser(@RequestBody Users user){
-    return ResponseEntity.ok(usersService.addUser(user));
+    return ok(usersService.addUser(user));
   }
 
   @GetMapping("/login")
   private ResponseEntity<String> login(@RequestParam String username, @RequestParam String password){
-    return ResponseEntity.ok(usersService.login(username, password));
+    return ok(usersService.login(username, password));
   }
 
 //  @PostMapping("/signup")
