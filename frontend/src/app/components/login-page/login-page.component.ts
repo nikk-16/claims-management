@@ -18,7 +18,6 @@ export class LoginPageComponent {
     })
   }
   login(){
-   
     this.userService.login(this.form.value.username,this.form.value.password).subscribe(response=>{
       if(response.includes("Login successful")){
         localStorage.setItem('username',this.form.value.username);
