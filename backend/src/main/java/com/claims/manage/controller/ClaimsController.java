@@ -1,10 +1,9 @@
-package com.claims.manage.controllers;
+package com.claims.manage.controller;
 
-import com.claims.manage.components.ApplyClaims;
-import com.claims.manage.models.Claims;
-import com.claims.manage.services.ClaimsService;
+import com.claims.manage.model.ApplyClaims;
+import com.claims.manage.domain.Claims;
+import com.claims.manage.service.ClaimsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClaimsController {
     private final ClaimsService claimsService;
 
-    @PostMapping("/applyClaim")
+    @PostMapping("/apply")
     private ResponseEntity<Claims> applyForClaims(@RequestBody ApplyClaims claim) {
         return ResponseEntity.ok(claimsService.apply(claim));
     }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { claimsUri } from '../constants';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,7 @@ import { Injectable } from '@angular/core';
 export class ClaimsService {
 
   constructor(private http:HttpClient) { }
-  private url="http://localhost:8080/claims";
   applyForClaims(claim:any){
-    return this.http.post(`${this.url}/applyClaim`,claim,{responseType:"json"});
+    return this.http.post(`${claimsUri}/apply`,claim,{responseType:"json"});
   }
 }

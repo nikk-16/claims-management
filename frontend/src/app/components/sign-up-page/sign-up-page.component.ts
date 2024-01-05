@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UsersService } from 'src/shared/services/users.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-sign-up-page',

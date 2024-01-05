@@ -1,12 +1,11 @@
-package com.claims.manage.services;
+package com.claims.manage.service;
 
-import com.claims.manage.models.Users;
-import com.claims.manage.repositories.UsersRepository;
+import com.claims.manage.domain.Users;
+import com.claims.manage.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

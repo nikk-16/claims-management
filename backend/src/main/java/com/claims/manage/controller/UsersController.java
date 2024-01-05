@@ -1,10 +1,8 @@
-package com.claims.manage.controllers;
+package com.claims.manage.controller;
 
-import com.claims.manage.models.Users;
-import com.claims.manage.services.UsersService;
+import com.claims.manage.domain.Users;
+import com.claims.manage.service.UsersService;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,6 +13,7 @@ import static org.springframework.http.ResponseEntity.ok;
 
 @CrossOrigin("*")
 @RestController
+@RequestMapping("/users")
 @RequiredArgsConstructor
 public class UsersController {
   private final UsersService usersService;
@@ -22,7 +21,7 @@ public class UsersController {
 //  public UsersController(UsersService userService) {
 //    this.usersService = userService;
 //  }
-  @GetMapping("/users/{id}")
+  @GetMapping("/{id}")
   private ResponseEntity<Users> getUserById(@PathVariable String id){
     return ResponseEntity.ok(usersService.getById(id));
   }

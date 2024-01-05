@@ -1,6 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { insuranceUri } from '../constants';
 
 interface insurance{
   id:string,
@@ -17,7 +18,6 @@ interface insurance{
 export class InsurancesService {
 
   constructor(private http:HttpClient) { }
-  private url="http://localhost:8080/insurances"
   // insurances:insurance[]=[{
   //   id:"123456",
   //   username:"456789",
@@ -38,11 +38,11 @@ export class InsurancesService {
 
   // }]
   getAllInsurancesByUsername(username:string){
-    return this.http.get<any>(`${this.url}/getInsurancesByUsername/${username}`);
+    return this.http.get<any>(`${insuranceUri}/${username}`);
   }
 
   applyForInsurance(newInsurance:any){
-    return this.http.post(`${this.url}/buy_insurance`,newInsurance,{responseType:"json"});
+    return this.http.post(`${insuranceUri}/buy`,newInsurance,{responseType:"json"});
   }
 
 }
