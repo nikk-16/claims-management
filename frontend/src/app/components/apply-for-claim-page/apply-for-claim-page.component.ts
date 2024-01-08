@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { InsurancePolicies } from 'src/app/model/insurance-policies';
 import { ClaimsService } from 'src/app/services/claims.service';
+import { InsurancesService } from 'src/app/services/insurances.service';
 
 @Component({
   selector: 'app-apply-for-claim-page',
@@ -8,20 +11,43 @@ import { ClaimsService } from 'src/app/services/claims.service';
   styleUrl: './apply-for-claim-page.component.scss'
 })
 export class ApplyForClaimPageComponent {
-  form: any;
-  constructor(private fb: FormBuilder, private claimService: ClaimsService) {
+  form: FormGroup;
+  insuranceDetails: any[] = [];
+  username: string | null;
+  constructor(private fb: FormBuilder, private claimService: ClaimsService, 
+    private insuranceServices: InsurancesService,
+    public snackBar:MatSnackBar) {
+    this.username = localStorage.getItem('username');
     this.form = this.fb.group({
       policyNo: ['', Validators.required],
-      name: ['', Validators.required],
-      insuranceType: ['', Validators.required],
+      name: [`${this.username}`, Validators.required],
+      insuranceType: [''],
       claimReason: ['', Validators.required],
       estimatedAmount: ['', Validators.required]
     });
+
+  }
+  ngOnInit() {
+    if (this.username != null) {
+      this.insuranceServices.getAllInsurancesByUsername(this.username).subscribe(response => {
+        this.insuranceDetails = response;
+      })
+    }
   }
 
   claimRequest() {
-    this.claimService.applyForClaims(this.form.value).subscribe(response => {
-      //console.log(response);
-    })
+    var policyNo: string = this.form.value.policyNo;
+    var selectedInsurance= this.insuranceDetails.filter(obj => obj.id == policyNo);
+    this.form.value.insuranceType = selectedInsurance[0].type;
+    this.claimService.applyForClaims(this.form.value).subscribe(response => { })
+    this.openSnackBar();
+  }
+
+  openSnackBar() {
+    this.snackBar.open('Claim Submitted','Ok', {
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      duration:1000
+    });
   }
 }

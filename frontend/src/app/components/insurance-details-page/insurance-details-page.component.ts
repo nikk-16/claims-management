@@ -36,7 +36,6 @@ export class InsuranceDetailsPageComponent implements OnInit{
   }
   ngOnInit(){
     this.insurancePoliciesService.getAllInsurancePolicies().subscribe(response=>{
-      //console.log(response);
       this.insurancePolicies=response;
     })
   }

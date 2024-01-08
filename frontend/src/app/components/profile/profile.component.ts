@@ -24,11 +24,11 @@ export class ProfileComponent {
     // this.insurances=this.insuranceService.insurances;
     this.insuranceService.getAllInsurancesByUsername(this.username).subscribe(response=>{
       this.insurances=response
-      console.log(response);
+      //console.log(response);
     });
     this.userService.getUserByUsername(this.username).subscribe(response=>{
       this.userDetails=response
-      console.log(response);
+     // console.log(response);
     });
    
   }

@@ -8,12 +8,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit{
   title = 'claims-management';
-  // @Input() side:any = true;
   username:string|any="";
   side:boolean=true;
   constructor(private router:Router){
     this.username=localStorage.getItem('username');  
-    
   }
   ngOnInit(){
     this.router.events.subscribe((value:any)=>{
@@ -21,7 +19,6 @@ export class AppComponent implements OnInit{
     })
   }
   put(side:string){
-    //console.error(side)
     this.side = !this.side;
   }
 }
