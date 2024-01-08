@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -39,6 +40,11 @@ public class UsersController {
   @GetMapping("/login")
   private ResponseEntity<String> login(@RequestParam String username, @RequestParam String password){
     return ok(usersService.login(username, password));
+  }
+
+  @GetMapping("/user/{username}")
+  private ResponseEntity<Optional<Users>> getByUsername(@PathVariable String username){
+    return ResponseEntity.ok(usersService.getByUsername(username));
   }
 
 //  @PostMapping("/signup")
