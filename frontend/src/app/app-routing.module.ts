@@ -48,7 +48,12 @@ const routes: Routes = [
     path:'claims',
     component:ClaimsDetailsPageComponent,
     canActivate:[AuthGuard]
-  }
+  },
+  {
+    path:'profile',
+    component:ProfileComponent,
+    canActivate:[AuthGuard]
+  },
 ];
 
 @NgModule({

@@ -13,6 +13,7 @@ export class AppConstant {
     public static readonly USERS_URI = "http://localhost:8080/users";
     public static readonly INSURANCE_URI = "http://localhost:8080/insurance";
     public static readonly CLAIMS_URI = "http://localhost:8080/claims";
+    public static readonly INSURANCE_POLICIES_URI = "http://localhost:8080/insurancepolicies";
     // public static readonly SEARCH_RESULT_NOT_FOUND = 'No records found for the search criteria entered.';
     // public static readonly EVENT_NOT_FOUND = 'No Events Found for the Claim ';
     // public static readonly DEFAULT_ERROR= 'Error from merlin backend';
