@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
-import { usersUri } from '../constants';
+import { AppConstant } from '../util/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -22,23 +22,23 @@ export class UsersService implements OnInit{
   }
  
   getAllUsers() {
-    return this.http.get<any>(`${usersUri}/getAll`);
+    return this.http.get<any>(`${AppConstant.USERS_URI}/getAll`);
   }
 
   getUserById(userId:string){
-    return this.http.get<any>(`${usersUri}/${userId}`);
+    return this.http.get<any>(`${AppConstant.USERS_URI}/${userId}`);
   }
 
   signUp(userData:any){
-    return this.http.post(`${usersUri}/signup`,userData,{responseType:"json"});
+    return this.http.post(`${AppConstant.USERS_URI}/signup`,userData,{responseType:"json"});
   }
 
   updateUser(userData:any){
-    return this.http.put(`${usersUri}/update`,userData,{responseType:"json"});
+    return this.http.put(`${AppConstant.USERS_URI}/update`,userData,{responseType:"json"});
   }
 
   login(username: string, password: string) {
-    return this.http.get(`${usersUri}/login`, {
+    return this.http.get(`${AppConstant.USERS_URI}/login`, {
     responseType: 'text',
     params: {
       username: username,

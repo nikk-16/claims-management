@@ -8,6 +8,7 @@ import { ApplyForInsurancePageComponent } from './components/apply-for-insurance
 import { InsuranceDetailsPageComponent } from './components/insurance-details-page/insurance-details-page.component';
 import { ClaimsDetailsPageComponent } from './components/claims-details-page/claims-details-page.component';
 import { AuthGuard } from './services/auth.service';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -47,7 +48,12 @@ const routes: Routes = [
     path:'claims',
     component:ClaimsDetailsPageComponent,
     canActivate:[AuthGuard]
-  }
+  },
+  {
+    path:'profile',
+    component:ProfileComponent,
+    canActivate:[AuthGuard]
+  },
 ];
 
 @NgModule({
