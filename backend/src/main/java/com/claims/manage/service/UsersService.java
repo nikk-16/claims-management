@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -14,6 +15,11 @@ public class UsersService {
 
   public Users getById(String id){
     return usersRepository.findById(id).get();
+  }
+
+  public Optional<Users> getByUsername(String username){
+    System.out.println(usersRepository.findUsersByUsername(username));
+    return usersRepository.findUsersByUsername(username);
   }
 
   public List<Users> getAllUsers(){
