@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { insuranceUri } from '../constants';
+import { AppConstant } from '../util/constants';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,11 +26,11 @@ export class InsurancesService {
   //   maxClaim:567889
   // }]
   getAllInsurancesByUsername(username:string){
-    return this.http.get<any>(`${insuranceUri}/${username}`);
+    return this.http.get<any>(`${AppConstant.INSURANCE_URI}/${username}`);
   }
 
   applyForInsurance(newInsurance:any){
-    return this.http.post(`${insuranceUri}/buy`,newInsurance,{responseType:"json"});
+    return this.http.post(`${AppConstant.INSURANCE_URI}/buy`,newInsurance,{responseType:"json"});
   }
 
 }
