@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { InsurancePoliciesService } from '../../services/insurance-policies.service';
 import { InsuranceDetailsPageComponent } from './insurance-details-page.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('InsuranceDetailsPageComponent', () => {
   let component: InsuranceDetailsPageComponent;
@@ -8,7 +9,9 @@ describe('InsuranceDetailsPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [InsuranceDetailsPageComponent]
+      declarations: [InsuranceDetailsPageComponent],
+      imports: [HttpClientTestingModule],
+      providers: [InsurancePoliciesService]
     })
     .compileComponents();
     

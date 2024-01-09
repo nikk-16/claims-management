@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InsurancePolicies } from 'src/app/model/insurance-policies';
-import { InsurancePoliciesService } from 'src/app/services/insurance-policies.service';
-import { InsurancesService } from 'src/app/services/insurances.service';
-
+import { InsurancePoliciesService } from '../../services/insurance-policies.service';
 
 @Component({
   selector: 'app-insurance-details-page',
@@ -36,7 +34,6 @@ export class InsuranceDetailsPageComponent implements OnInit{
   }
   ngOnInit(){
     this.insurancePoliciesService.getAllInsurancePolicies().subscribe(response=>{
-      //console.log(response);
       this.insurancePolicies=response;
     })
   }

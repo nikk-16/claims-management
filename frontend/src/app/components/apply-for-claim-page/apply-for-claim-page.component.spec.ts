@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ClaimsService } from '../../services/claims.service';
+import { InsurancesService } from '../../services/insurances.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ApplyForClaimPageComponent } from './apply-for-claim-page.component';
 
 describe('ApplyForClaimPageComponent', () => {
@@ -8,7 +10,9 @@ describe('ApplyForClaimPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ApplyForClaimPageComponent]
+      declarations: [ApplyForClaimPageComponent],
+      imports: [HttpClientTestingModule],
+      providers: [ClaimsService,InsurancesService]
     })
     .compileComponents();
     
