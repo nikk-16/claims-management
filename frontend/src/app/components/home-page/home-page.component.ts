@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
-import { InsurancePolicies } from 'src/app/model/insurance-policies';
-import { InsurancePoliciesService } from 'src/app/services/insurance-policies.service';
+import { InsurancePolicies } from '../../model/insurance-policies';
+import { InsurancePoliciesService } from '../../services/insurance-policies.service';
 
 @Component({
   selector: 'app-home-page',

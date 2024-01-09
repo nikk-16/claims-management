@@ -1,7 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { InsurancesService } from 'src/app/services/insurances.service';
+import { InsurancesService } from '../../services/insurances.service';
 
 @Component({
   selector: 'app-apply-for-insurance-page',
@@ -15,7 +15,7 @@ export class ApplyForInsurancePageComponent {
   constructor(private fb: FormBuilder, private insuranceService: InsurancesService) {
     this.username = localStorage.getItem('username');
     this.form = this.fb.group({
-      username: [`${this.username}`, Validators.required],
+      username: [`${this?.username}`, Validators.required],
       type: ['', Validators.required],
       amount: ['', Validators.required],
       startDate: [formatDate(`${this.today}`, 'yyyy-MM-dd', 'en') ,Validators.required],

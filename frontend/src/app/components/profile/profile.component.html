@@ -4,7 +4,7 @@
 
 <div class="d-flex flex-column flex-wrap justify-content-center mt-5">
   <header class="d-flex flex-column align-items-center" style="font-family: 'Josefin Sans', sans-serif;">
-      <p class="text-center fs-1" style="font-family: 'Josefin Sans', sans-serif;">Hello {{userDetails.username}}!</p>
+      <p class="text-center fs-1" style="font-family: 'Josefin Sans', sans-serif;">Hello {{userDetails?.username}}!</p>
       <hr class="w-75">
   </header>
 </div>
@@ -20,7 +20,7 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <span class="font-weight-bold  mr-2">Name:</span>
-              {{userDetails.username}} 
+              {{userDetails?.username}} 
             </li>
             <!-- <li class="list-group-item">
               <span class="font-weight-bold mr-2">Age:</span>
@@ -28,11 +28,11 @@
             </li> -->
             <li class="list-group-item">
               <span class="font-weight-bold mr-2">Email:</span>
-              {{userDetails.email}}
+              {{userDetails?.email}}
             </li>
             <li class="list-group-item">
               <span class="font-weight-bold mr-2">Phone:</span>
-              {{userDetails.mobile}}
+              {{userDetails?.mobile}}
             </li>
             <!-- <li class="list-group-item">
               <span class="font-weight-bold mr-2">DOB:</span>

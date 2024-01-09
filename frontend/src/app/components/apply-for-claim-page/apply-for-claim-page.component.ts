@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { InsurancePolicies } from 'src/app/model/insurance-policies';
-import { ClaimsService } from 'src/app/services/claims.service';
-import { InsurancesService } from 'src/app/services/insurances.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ClaimsService } from '../../services/claims.service';
+import { InsurancesService } from '../../services/insurances.service';
 
 @Component({
   selector: 'app-apply-for-claim-page',
@@ -20,7 +19,7 @@ export class ApplyForClaimPageComponent {
     this.username = localStorage.getItem('username');
     this.form = this.fb.group({
       policyNo: ['', Validators.required],
-      name: [`${this.username}`, Validators.required],
+      name: [`${this?.username}`, Validators.required],
       insuranceType: [''],
       claimReason: ['', Validators.required],
       estimatedAmount: ['', Validators.required]

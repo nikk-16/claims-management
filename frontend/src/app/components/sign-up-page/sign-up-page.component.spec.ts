@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SignUpPageComponent } from './sign-up-page.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { UsersService } from '../../services/users.service';
 
 describe('SignUpPageComponent', () => {
   let component: SignUpPageComponent;
@@ -8,7 +9,9 @@ describe('SignUpPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SignUpPageComponent]
+      declarations: [SignUpPageComponent],
+      imports: [HttpClientTestingModule],
+      providers: [UsersService]
     })
     .compileComponents();
     
