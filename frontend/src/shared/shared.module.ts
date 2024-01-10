@@ -7,6 +7,7 @@ import { ApplyClaimsCardComponent } from './shared-components/apply-claims-card/
 
 @NgModule({
   declarations: [
+
   ],
   imports: [
     CommonModule
