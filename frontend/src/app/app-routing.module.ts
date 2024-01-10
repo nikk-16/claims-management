@@ -9,7 +9,6 @@ import { InsuranceDetailsPageComponent } from './components/insurance-details-pa
 import { ClaimsDetailsPageComponent } from './components/claims-details-page/claims-details-page.component';
 import { AuthGuard } from './services/auth.service';
 import { ProfileComponent } from './components/profile/profile.component';
-import { ShowInsuranceComponent } from './components/show-insurance/show-insurance.component';
 
 const routes: Routes = [
   {
@@ -58,7 +57,7 @@ const routes: Routes = [
   },
   {
     path: 'insurances/:id',
-    component: ShowInsuranceComponent
+    component: InsuranceDetailsPageComponent
   }
 ];
 

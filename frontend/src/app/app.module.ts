@@ -21,7 +21,6 @@ import { InsuranceCardComponent } from 'src/shared/shared-components/insurance-c
 import { ApplyClaimsCardComponent } from 'src/shared/shared-components/apply-claims-card/apply-claims-card.component';
 import { InsuranceDescriptionPageComponent } from 'src/shared/shared-components/insurance-description-page/insurance-description-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { ShowInsuranceComponent } from './components/show-insurance/show-insurance.component';
 
 
 @NgModule({
