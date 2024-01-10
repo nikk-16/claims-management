@@ -1,9 +1,8 @@
 <mat-card>
     <mat-card-header class="header py-3">
         <mat-card-title-group>
-            <mat-card-title>Chubb Health Insurance starting at 8824/year</mat-card-title>
-            <mat-card-subtitle class="pt-3"> <button mat-raised-button color="primary">Get
-                    Quote</button></mat-card-subtitle>
+            <mat-card-title>Chubb {{insurancePolicy?.type | titlecase}} Insurance starting at {{insurancePolicy?.amount}}/year</mat-card-title>
+            <mat-card-subtitle class="pt-3"> <button mat-raised-button color="primary">Get Quote</button></mat-card-subtitle>
             <img mat-card-sm-image
                 src="https://about.chubb.com/content/dam/chubb-sites/chubb-com/us-en/about-chubb/chubb-history/images/2016.jpg">
         </mat-card-title-group>
@@ -11,17 +10,8 @@
     <mat-card-content>
         <h2 class="text-center pt-2">Key highlights & Features of Policy</h2>
         <div class="highlights d-flex justify-content-center gap-3 flex-wrap">
-            <mat-card class="">
-                <mat-card-content>cashless treatment at 10000+ hospitals</mat-card-content>
-            </mat-card>
-            <mat-card>
-                <mat-card-content>cashless treatment at 10000+ hospitals</mat-card-content>
-            </mat-card>
-            <mat-card>
-                <mat-card-content>cashless treatment at 10000+ hospitals</mat-card-content>
-            </mat-card>
-            <mat-card>
-                <mat-card-content>cashless treatment at 10000+ hospitals</mat-card-content>
+            <mat-card *ngFor="let i of insurancePolicy?.description">
+                <mat-card-content>{{i}}</mat-card-content>
             </mat-card>
         </div>
     </mat-card-content>
@@ -34,10 +24,10 @@
         <h2>Eligibility criteria and documents required</h2>
         <img src="https://images.pexels.com/photos/7821684/pexels-photo-7821684.jpeg?auto=compress&cs=tinysrgb&w=600"
             alt="image not found" width="90%" height="75%">
-        <mat-card-subtitle class="py-2">Get acquainted with the full range of benefits of the plan</mat-card-subtitle>
+        <p class="py-2">Get acquainted with the full range of benefits of the plan</p>
     </div>
     <div class="container-right">
-        <p>Anyone can apply for Chubb group Activ Health plan as long as you meet basic criteria mentioned below.
+        <p>Anyone can apply for Chubb group Activ {{insurancePolicy?.type}} plan as long as you meet basic criteria mentioned below.
             If you meet all the eligibility criteria, we will need some basic criteria mentioned below.</p>
         <h3>Eligibility criteria</h3>
         <ul>

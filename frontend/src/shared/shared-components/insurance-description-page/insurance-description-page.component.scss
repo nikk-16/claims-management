@@ -7,7 +7,6 @@
         font-weight: bold;
         color: #333;
     }
-
     button {
         font-weight: bold;
         padding: 10px 20px;
@@ -22,6 +21,7 @@
 
 .highlights {
     mat-card {
+        width:400px;
         background-color: #f2f2f2;
         padding: 15px;
         border-radius: 5px;
