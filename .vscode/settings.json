@@ -2,5 +2,6 @@
     "java.compile.nullAnalysis.mode": "automatic",
     "java.project.sourcePaths": [
         "backend/src/main/java/com/claims/manage/models"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

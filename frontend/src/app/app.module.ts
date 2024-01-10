@@ -20,7 +20,7 @@ import { SharedModule } from 'src/shared/shared.module';
 import { InsuranceCardComponent } from 'src/shared/shared-components/insurance-card/insurance-card.component';
 import { ApplyClaimsCardComponent } from 'src/shared/shared-components/apply-claims-card/apply-claims-card.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { ShowInsuranceComponent } from './components/show-insurance/show-insurance.component';
+import { InsuranceDescriptionPageComponent } from 'src/shared/shared-components/insurance-description-page/insurance-description-page.component';
 
 
 @NgModule({
@@ -37,8 +37,7 @@ import { ShowInsuranceComponent } from './components/show-insurance/show-insuran
         SidebarComponent,
         InsuranceCardComponent,
         ApplyClaimsCardComponent,
-        ProfileComponent,
-        ShowInsuranceComponent
+        ProfileComponent
     ],
     providers: [{ provide: HTTP_INTERCEPTORS, useClass: ClaimsInterceptor, multi: true }],
     bootstrap: [AppComponent],
