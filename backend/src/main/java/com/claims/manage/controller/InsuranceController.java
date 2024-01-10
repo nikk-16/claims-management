@@ -24,4 +24,9 @@ public class InsuranceController {
     private ResponseEntity<List<Insurance>> getInsurancesByUsername(@PathVariable String username){
         return ResponseEntity.ok(insuranceService.getByUsername(username));
     }
+
+    @GetMapping("/{id}")
+    private ResponseEntity<Insurance> getInsurancesById(@PathVariable String id){
+        return ResponseEntity.ok(insuranceService.getById(id));
+    }
 }

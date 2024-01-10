@@ -23,4 +23,8 @@ public class InsuranceService {
         System.out.println(insuranceRepository.findInsurancesByUsername(username));
         return insuranceRepository.findInsurancesByUsername(username);
     }
+
+    public Insurance getById(String id) {
+        return insuranceRepository.findById(id).get();
+    }
 }

@@ -9,6 +9,7 @@ import { InsuranceDetailsPageComponent } from './components/insurance-details-pa
 import { ClaimsDetailsPageComponent } from './components/claims-details-page/claims-details-page.component';
 import { AuthGuard } from './services/auth.service';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ShowInsuranceComponent } from './components/show-insurance/show-insurance.component';
 
 const routes: Routes = [
   {
@@ -17,43 +18,48 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path:'signup',
-    component:SignUpPageComponent
+    path: 'signup',
+    component: SignUpPageComponent
   },
   {
-    path:'login',
-    component:LoginPageComponent
+    path: 'login',
+    component: LoginPageComponent
   },
   {
-    path:'home',
-    component:HomePageComponent
+    path: 'home',
+    component: HomePageComponent
   },
   {
-    path:'claimApplication',
-    component:ApplyForClaimPageComponent,
-    canActivate:[AuthGuard]
-    
+    path: 'claimApplication',
+    component: ApplyForClaimPageComponent,
+    canActivate: [AuthGuard]
+
   },
   {
-    path:'insuranceApplication',
-    component:ApplyForInsurancePageComponent,
-    canActivate:[AuthGuard]
+    path: 'insuranceApplication',
+    component: ApplyForInsurancePageComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path:'insurances',
-    component:InsuranceDetailsPageComponent,
-    canActivate:[AuthGuard]
+    path: 'insurances',
+    component: InsuranceDetailsPageComponent,
+    canActivate: [AuthGuard],
+    // children: [{ path: ':type', component: ShowInsuranceComponent }]
   },
   {
-    path:'claims',
-    component:ClaimsDetailsPageComponent,
-    canActivate:[AuthGuard]
+    path: 'claims',
+    component: ClaimsDetailsPageComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path:'profile',
-    component:ProfileComponent,
-    canActivate:[AuthGuard]
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
+  {
+    path: 'insurances/:id',
+    component: ShowInsuranceComponent
+  }
 ];
 
 @NgModule({

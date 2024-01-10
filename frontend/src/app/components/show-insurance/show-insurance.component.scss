@@ -1,0 +1,17 @@
+.card{
+    border: 0px solid black !important;
+    border-radius: 15px;
+    box-shadow: 0 0 8px gray;
+    // ::shadow{
+    //     box-shadow: 100px;
+    // }
+  }
+  .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  .img{
+    border-radius: 50%;
+  }

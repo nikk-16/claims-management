@@ -1,15 +1,15 @@
-<!-- <p>insurance-card works!</p> -->
-<br>
-<mat-card class="card mat-elevation-z8 p-3 pt-4 border-lg shadow-5">
+<h2 class="text-center my-3">{{insuranceId}}</h2>
+<div class="container">
+<mat-card class="card mat-elevation-z8 p-3 pt-4 border-lg shadow-5 ">
     <div class="full-container d-flex flex-column">
-        <div class="container">
+        <div class="container d-flex flex-row justify-content-around">
             <div class="header-container d-flex flex-row col-md-3">
                 <img src="https://about.chubb.com/content/dam/chubb-sites/chubb-com/us-en/about-chubb/chubb-history/images/2016.jpg"
                     alt="logo" height="80px" width="80px" class="img mx-2">
                 <div class="body-container d-flex flex-column align-items-center justify-content-center">
 
-                    <mat-card-title>{{insurancePolicy?.type | titlecase}} Insurance</mat-card-title>
-                    <mat-card-subtitle>Get claims upto {{insurancePolicy?.maxClaim}}</mat-card-subtitle>
+                    <mat-card-title>{{insurancePolicy.type | titlecase}} Insurance</mat-card-title>
+                    <mat-card-subtitle>Get claims upto {{insurancePolicy.maxClaim}}</mat-card-subtitle>
                 </div>
             </div>
             <div class="header-container d-flex flex-column col-md-8">
@@ -17,26 +17,27 @@
                 <div class="body-container d-flex flex-row justify-content-around align-items-center mt-3">
                     <div class="body-container-1 d-flex flex-column">
                         <mat-card-title>Insurances start from*</mat-card-title>
-                        <mat-card-subtitle class="fs-6">{{insurancePolicy?.amount}}/year</mat-card-subtitle>
+                        <mat-card-subtitle class="fs-6">{{insurancePolicy.amount}}/year</mat-card-subtitle>
                     </div>
                     <div class="body-container-1 d-flex flex-column">
                         <mat-card-title>Coverage Upto*</mat-card-title>
-                        <mat-card-subtitle class="fs-6">{{insurancePolicy?.maxClaim}}*</mat-card-subtitle>
+                        <mat-card-subtitle class="fs-6">{{insurancePolicy.maxClaim}}*</mat-card-subtitle>
                     </div>
                 </div>
                 <hr>
                 <h2>Key Features:</h2>
                 <div class="features-container">
                     <ul>
-                        <li *ngFor="let i of insurancePolicy?.description">{{i | titlecase}}</li>
+                        <li *ngFor="let i of insurancePolicy.description">{{i | titlecase}}</li>
                     </ul>
                 </div>
             </div>
         </div>
         <hr>
         <div class="d-flex flex-row align-items-end justify-content-end">
-            <button mat-raised-button class="m-2" color="primary" (click)="toViewInsurance($event)">View Details</button>
+            <button mat-raised-button class="m-2" color="primary">View Details</button>
             <button mat-raised-button class="m-2" color="warn" routerLink="/insuranceApplication">Get Quote</button>
         </div>
     </div>
 </mat-card>
+</div>
