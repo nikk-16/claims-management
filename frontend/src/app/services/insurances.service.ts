@@ -7,24 +7,6 @@ import { AppConstant } from '../util/constants';
 export class InsurancesService {
 
   constructor(private http:HttpClient) { }
-  // insurances:insurance[]=[{
-  //   id:"123456",
-  //   username:"456789",
-  //   type:"health",
-  //   amount:100000,
-  //   startDate:new Date('1/1/2003'),
-  //   endDate:new Date('1/1/2013'),
-  //   maxClaim:400000
-  // },
-  // {
-  //   id:"123457",
-  //   username:"456789",
-  //   type:"vehicle",
-  //   amount:234560,
-  //   startDate:new Date('1/1/2003'),
-  //   endDate:new Date('1/1/2013'),
-  //   maxClaim:567889
-  // }]
   getAllInsurancesByUsername(username:string){
     return this.http.get<any>(`${AppConstant.INSURANCE_URI}/${username}`);
   }

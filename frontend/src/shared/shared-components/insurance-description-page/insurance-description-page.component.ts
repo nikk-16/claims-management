@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InsurancePolicies } from 'src/app/model/insurance-policies';
 import { InsurancePoliciesService } from '../../../app/services/insurance-policies.service';
 
@@ -12,7 +12,8 @@ export class InsuranceDescriptionPageComponent {
   insuranceId: string|any;
   insurancePolicy:InsurancePolicies|any;
   username :string |any= localStorage.getItem("username");
-  constructor(private ar: ActivatedRoute, private insurancePoliciesService:InsurancePoliciesService){
+  constructor(private ar: ActivatedRoute, private insurancePoliciesService:InsurancePoliciesService,
+    private router:Router){
     this.insuranceId! = ar.snapshot.params['id'];
   }
   ngOnInit(){
@@ -21,5 +22,9 @@ export class InsuranceDescriptionPageComponent {
         this.insurancePolicy = response;
       })
     }
+  }
+
+  buyNewInsurance(){
+    this.router.navigate(['insuranceApplication'])
   }
 }

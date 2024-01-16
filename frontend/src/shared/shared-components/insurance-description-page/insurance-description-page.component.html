@@ -2,7 +2,7 @@
     <mat-card-header class="header py-3">
         <mat-card-title-group>
             <mat-card-title>Chubb {{insurancePolicy?.type | titlecase}} Insurance starting at {{insurancePolicy?.amount}}/year</mat-card-title>
-            <mat-card-subtitle class="pt-3"> <button mat-raised-button color="primary">Get Quote</button></mat-card-subtitle>
+            <mat-card-subtitle class="pt-3"> <button mat-raised-button color="primary" (click)="buyNewInsurance()">Get Quote</button></mat-card-subtitle>
             <img mat-card-sm-image
                 src="https://about.chubb.com/content/dam/chubb-sites/chubb-com/us-en/about-chubb/chubb-history/images/2016.jpg">
         </mat-card-title-group>

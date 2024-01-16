@@ -8,10 +8,8 @@ import { EventEmitter } from '@angular/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
-  // @Input() sidebar!: boolean;
   @Output() showSidebar: EventEmitter<string> = new EventEmitter<string>();
   username: string | any;
-  // side=this.sidebar;
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -29,12 +27,6 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleSidebar(){
-    // if(this.side){
-    //   this.side = false;
-    // }
-    // else{
-    //   this.side = true;
-    // }
     this.showSidebar.emit("somedata");
   }
 }
