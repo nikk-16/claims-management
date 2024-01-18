@@ -15,19 +15,7 @@ public class ClaimsService {
   private final ClaimsRepository claimsRepository;
   private final UsersRepository usersRepository;
 
-  public Claims apply(ApplyClaims claim){
-//    private String id;
-//    private String insuranceId;
-//    private String policyNo;
-
-//    Claims claims = new Claims();
-//    claims.setName(claim.getName());
-//    claims.setType(claim.getInsuranceType());
-//    claims.setReason(claim.getClaimReason());
-//    claims.setAmount(claim.getEstimatedAmount());
-//    claims.setStatus("Applied");
-//      return claimsRepository.save(claims);
-      System.out.println("Apllied");
+  public Claims apply(ApplyClaims claim) throws IllegalArgumentException{
 
     return Optional.ofNullable(claim)
             .map(c -> {
@@ -35,7 +23,7 @@ public class ClaimsService {
               claims.setStatus("Applied");
               return claimsRepository.save(claims);
             })
-            .orElseThrow(() -> new IllegalArgumentException("Claim cannot be null"));
+            .orElseThrow(() -> new IllegalArgumentException("Details not complete"));
 
 //      return Optional.ofNullable(claim)
 //              .map(c -> {

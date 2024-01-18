@@ -37,7 +37,8 @@ import { InsuranceDescriptionPageComponent } from 'src/shared/shared-components/
         SidebarComponent,
         InsuranceCardComponent,
         ApplyClaimsCardComponent,
-        ProfileComponent
+        ProfileComponent,
+        InsuranceDescriptionPageComponent
     ],
     providers: [{ provide: HTTP_INTERCEPTORS, useClass: ClaimsInterceptor, multi: true }],
     bootstrap: [AppComponent],

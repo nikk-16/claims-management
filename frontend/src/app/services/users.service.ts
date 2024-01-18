@@ -25,9 +25,9 @@ export class UsersService implements OnInit {
     return this.http.get<any>(`${AppConstant.USERS_URI}/getAll`);
   }
 
-  getUserById(userId: string) {
-    return this.http.get<any>(`${AppConstant.USERS_URI}/${userId}`);
-  }
+  // getUserById(userId: string) {
+  //   return this.http.get<any>(`${AppConstant.USERS_URI}/${userId}`);
+  // }
 
   // signUp(userData: any) {
   //   return this.http.post(`${AppConstant.USERS_URI}/signup`, userData, { responseType: "json" });
@@ -39,7 +39,7 @@ export class UsersService implements OnInit {
       }),
       responseType: 'json' as const
     };
-  
+
     return this.http.post(`${AppConstant.USERS_URI}/signup`, userData, httpOptions);
   }
 

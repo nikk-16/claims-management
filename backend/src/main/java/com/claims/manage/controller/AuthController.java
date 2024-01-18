@@ -1,7 +1,9 @@
 package com.claims.manage.controller;
 
 
-import com.claims.manage.Security.JwtHelper;
+import com.claims.manage.exception.InvalidCredentialsException;
+import com.claims.manage.exception.NotFoundException;
+import com.claims.manage.security.JwtHelper;
 import com.claims.manage.domain.Users;
 import com.claims.manage.exception.ResourceNotFoundException;
 import com.claims.manage.model.JwtRequest;
@@ -13,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,8 +32,7 @@ public class AuthController {
     private final JwtHelper jwtHelper;
 
     @GetMapping("/login")
-    public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest request){
-        System.out.println("**"+request);
+    public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest request) throws InvalidCredentialsException, NotFoundException{
         this.authenticateUser(request.getUsername(), request.getPassword());
         UserDetails userDetails = this.userDetailsService.loadUserByUsername(request.getUsername());
         String token = this.jwtHelper.generatedToken(userDetails);
@@ -40,15 +42,18 @@ public class AuthController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    private void authenticateUser(String Username, String Password){
+    private void authenticateUser(String Username, String Password) throws InvalidCredentialsException, NotFoundException {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(Username, Password));
         }
         catch(BadCredentialsException e){
-            throw new ResourceNotFoundException("Invalid username or password");
+            throw new InvalidCredentialsException("Invalid username or password");
         }
         catch (DisabledException e){
             throw new ResourceNotFoundException("User is not active");
+        }
+        catch (AuthenticationCredentialsNotFoundException e){
+            throw new NotFoundException("User not found");
         }
     }
 

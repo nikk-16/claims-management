@@ -17,6 +17,7 @@ public class Claims {
   private Double estimate;
   private String releasedAmount;
   private String status;
+  public Claims(){}
 
   public Claims(String name, String insuranceType, String claimReason, Double estimatedAmount) {
     this.name = name;

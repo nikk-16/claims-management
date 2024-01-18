@@ -1,4 +1,4 @@
-package com.claims.manage.Security;
+package com.claims.manage.security;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;

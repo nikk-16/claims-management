@@ -1,10 +1,8 @@
 package com.claims.manage.config;
 
-import com.claims.manage.Security.JwtAuthenticationEntryPoint;
-import com.claims.manage.Security.JwtAuthenticationFilter;
+import com.claims.manage.security.JwtAuthenticationEntryPoint;
+import com.claims.manage.security.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,7 +20,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
 
@@ -65,6 +62,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth.requestMatchers("*").authenticated()
                         .requestMatchers("/users/signup").permitAll()
                         .requestMatchers("/users/login").permitAll()
+                        .requestMatchers("/insurancepolicies/getall").permitAll()
 //                        .requestMatchers("/api/b1/invoices/**").hasAnyRole(ADMIN.name(),USER.name())
                         .anyRequest().authenticated())
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(jwtAuthenticationEntryPoint))
