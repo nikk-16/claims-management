@@ -1,8 +1,10 @@
 package com.claims.manage.controller;
 
 import com.claims.manage.domain.Insurance;
+import com.claims.manage.exception.NotFoundException;
 import com.claims.manage.service.InsuranceService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,17 +18,28 @@ public class InsuranceController {
     private final InsuranceService insuranceService;
 
     @PostMapping("/buy")
-    private ResponseEntity<Insurance> buyInsurance(@RequestBody Insurance insurance){
-        return ResponseEntity.ok(insuranceService.buyInsurance(insurance));
+    private ResponseEntity<?> buyInsurance(@RequestBody Insurance insurance){
+        try {
+            return ResponseEntity.ok(insuranceService.buyInsurance(insurance));
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
-
-    @GetMapping("/{username}")
-    private ResponseEntity<List<Insurance>> getInsurancesByUsername(@PathVariable String username){
-        return ResponseEntity.ok(insuranceService.getByUsername(username));
+    @GetMapping("/user/{username}")
+    private ResponseEntity<?> getInsurancesByUsername(@PathVariable String username){
+        try {
+            return ResponseEntity.ok(insuranceService.getByUsername(username));
+        } catch (NotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<Insurance> getInsurancesById(@PathVariable String id){
-        return ResponseEntity.ok(insuranceService.getById(id));
+    private ResponseEntity<?> getInsurancesById(@PathVariable String id){
+        try {
+            return ResponseEntity.ok(insuranceService.getById(id));
+        } catch (NotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
     }
 }

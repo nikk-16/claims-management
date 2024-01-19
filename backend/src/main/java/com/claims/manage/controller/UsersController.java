@@ -1,6 +1,8 @@
 package com.claims.manage.controller;
 
-import com.claims.manage.Security.JwtHelper;
+import com.claims.manage.exception.AlreadyExistsException;
+import com.claims.manage.exception.NotFoundException;
+import com.claims.manage.security.JwtHelper;
 import com.claims.manage.domain.Users;
 import com.claims.manage.exception.ResourceNotFoundException;
 import com.claims.manage.model.JwtRequest;
@@ -16,8 +18,10 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -40,35 +44,66 @@ public class UsersController {
 //    this.usersService = userService;
 //  }
   @GetMapping("/{id}")
-  private ResponseEntity<Users> getUserById(@PathVariable String id){
-    return ok(usersService.getById(id));
+  public ResponseEntity<?> getUserById(@PathVariable String id) throws  NotFoundException{
+    Users user;
+    try {
+      user = usersService.getById(id);
+    } catch (NotFoundException e) {
+      return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+//      return new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+    }
+    return new ResponseEntity<>(user, HttpStatus.OK);
   }
 
   @GetMapping("/getAll")
-  private ResponseEntity<List<Users>> getAllUsers(){
-    return ok(usersService.getAllUsers());
+  public ResponseEntity<?> getAllUsers() {
+    try {
+      List<Users> users = usersService.getAllUsers();
+      return ResponseEntity.ok(users);
+    } catch (ResourceNotFoundException ex) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+    }
   }
 
   @PostMapping("/signup")
-  private ResponseEntity<Users> addUser(@RequestBody Users user){
-    return ok(usersService.addUser(user));
+  public ResponseEntity<?> addUser(@RequestBody Users user) {
+    try {
+      Users savedUser = usersService.addUser(user);
+      return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    } catch (AlreadyExistsException e) {
+      return new ResponseEntity<>("User already exists", HttpStatus.CONFLICT);
+    }
   }
 
   @PostMapping("/login")
-  private ResponseEntity<JwtResponse> login(@RequestBody JwtRequest request){
-//    return ok(usersService.login(username, password));
-    this.authenticateUser(request.getUsername(), request.getPassword());
-    UserDetails userDetails = this.userDetailsService.loadUserByUsername(request.getUsername());
-    String token = this.jwtHelper.generatedToken(userDetails);
-    JwtResponse response = new JwtResponse();
-    response.setToken(token);
-    response.setUser(this.modelMapper.map(userDetails, Users.class));
-    return new ResponseEntity<>(response, HttpStatus.OK);
+  public ResponseEntity<?> login(@RequestBody JwtRequest request) {
+    try {
+      this.authenticateUser(request.getUsername(), request.getPassword());
+      UserDetails userDetails = this.userDetailsService.loadUserByUsername(request.getUsername());
+      String token = this.jwtHelper.generatedToken(userDetails);
+      JwtResponse response = new JwtResponse();
+      response.setToken(token);
+      response.setUser(this.modelMapper.map(userDetails, Users.class));
+      return new ResponseEntity<>(response, HttpStatus.OK);
+    } catch (UsernameNotFoundException e) {
+      return new ResponseEntity<>("User not Found", HttpStatus.NOT_FOUND);
+    } catch (BadCredentialsException e) {
+      return new ResponseEntity<>("Invalid Credentials", HttpStatus.UNAUTHORIZED);
+    } catch (Exception e) {
+      return new ResponseEntity<>("Bad Credentials", HttpStatus.NOT_FOUND);
+    }
   }
 
   @GetMapping("/user/{username}")
-  private ResponseEntity<Optional<Users>> getByUsername(@PathVariable String username){
-    return ResponseEntity.ok(usersService.getByUsername(username));
+  public ResponseEntity<?> getByUsername(@PathVariable String username) {
+    try {
+      Users user = usersService.getByUsername(username);
+      return new ResponseEntity<>(user, HttpStatus.OK);
+    } catch (NotFoundException e) {
+      return new ResponseEntity<>("User not Found", HttpStatus.NOT_FOUND);
+    } catch (Exception e) {
+      return new ResponseEntity<>("Maybe unauthorised", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 
   private void authenticateUser(String Username, String Password){

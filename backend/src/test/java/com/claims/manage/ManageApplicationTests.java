@@ -3,11 +3,20 @@ package com.claims.manage;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class ManageApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
 
-}
+
+
+
+
+
+    @SpringBootTest
+    public class ManageApplicationTests {
+
+        @Test
+        public void contextLoads() {
+        }
+    }
+
+
+

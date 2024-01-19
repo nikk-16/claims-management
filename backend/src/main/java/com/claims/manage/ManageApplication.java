@@ -1,17 +1,19 @@
 package com.claims.manage;
 
-import lombok.RequiredArgsConstructor;
+import com.claims.manage.exception.NotFoundException;
+import com.claims.manage.service.UsersService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class ManageApplication implements CommandLineRunner {
-	private final PasswordEncoder passwordEncoder;
+	@Autowired
+	private UsersService usersService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ManageApplication.class, args);
@@ -21,10 +23,10 @@ public class ManageApplication implements CommandLineRunner {
 	public ModelMapper mapper(){
 		return new ModelMapper();
 	}
-
 	@Override
-	public void run(String... args) throws Exception{
-
-        System.out.println(this.passwordEncoder.encode("meghana123"));
+	public void run(String... args) throws Exception, NotFoundException {
+		System.out.println(usersService.getById("659d55c67309f0470b070a83"));
 	}
+
+
 }
