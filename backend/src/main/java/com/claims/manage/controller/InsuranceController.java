@@ -18,7 +18,7 @@ public class InsuranceController {
     private final InsuranceService insuranceService;
 
     @PostMapping("/buy")
-    private ResponseEntity<?> buyInsurance(@RequestBody Insurance insurance){
+    public ResponseEntity<?> buyInsurance(@RequestBody Insurance insurance){
         try {
             return ResponseEntity.ok(insuranceService.buyInsurance(insurance));
         } catch (Exception e){
@@ -26,7 +26,7 @@ public class InsuranceController {
         }
     }
     @GetMapping("/user/{username}")
-    private ResponseEntity<?> getInsurancesByUsername(@PathVariable String username){
+    public ResponseEntity<?> getInsurancesByUsername(@PathVariable String username){
         try {
             return ResponseEntity.ok(insuranceService.getByUsername(username));
         } catch (NotFoundException ex) {
@@ -35,7 +35,7 @@ public class InsuranceController {
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<?> getInsurancesById(@PathVariable String id){
+    public ResponseEntity<?> getInsurancesById(@PathVariable String id){
         try {
             return ResponseEntity.ok(insuranceService.getById(id));
         } catch (NotFoundException ex) {

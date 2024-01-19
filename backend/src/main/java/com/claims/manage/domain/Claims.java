@@ -18,7 +18,6 @@ public class Claims {
   private String releasedAmount;
   private String status;
   public Claims(){}
-
   public Claims(String name, String insuranceType, String claimReason, Double estimatedAmount) {
     this.name = name;
     this.type = insuranceType;

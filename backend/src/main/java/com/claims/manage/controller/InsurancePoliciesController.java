@@ -34,7 +34,7 @@ public class InsurancePoliciesController {
 //        return ResponseEntity.ok(insurancePoliciesService.getById(id));
 //    }
     @GetMapping("/getall")
-    private ResponseEntity<?> getAllInsurancePolicies(){
+    public ResponseEntity<?> getAllInsurancePolicies(){
         try {
             List<InsurancePolicies> policies = insurancePoliciesService.getAllInsurancePolicies();
             return ResponseEntity.ok(policies);
@@ -44,7 +44,7 @@ public class InsurancePoliciesController {
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<?> getInsurancePolicyById(@PathVariable String id){
+    public  ResponseEntity<?> getInsurancePolicyById(@PathVariable String id){
         try {
             InsurancePolicies policy = insurancePoliciesService.getById(id);
             return ResponseEntity.ok(policy);

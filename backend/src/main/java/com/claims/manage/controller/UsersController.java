@@ -21,7 +21,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -44,13 +43,12 @@ public class UsersController {
 //    this.usersService = userService;
 //  }
   @GetMapping("/{id}")
-  public ResponseEntity<?> getUserById(@PathVariable String id) throws  NotFoundException{
+  public ResponseEntity<?> getUserById(@PathVariable String id) {
     Users user;
     try {
       user = usersService.getById(id);
     } catch (NotFoundException e) {
       return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
-//      return new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
     }
     return new ResponseEntity<>(user, HttpStatus.OK);
   }
@@ -106,7 +104,7 @@ public class UsersController {
     }
   }
 
-  private void authenticateUser(String Username, String Password){
+  void authenticateUser(String Username, String Password){
     try {
       authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(Username, Password));
     }

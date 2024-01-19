@@ -25,7 +25,7 @@ public class JwtHelper {
         return getClaimFromToken(token, Claims::getExpiration);
     }
     //check if token expired
-    private boolean isTokenExpired(String token){
+    public boolean isTokenExpired(String token){
         final Date expirationDateFromToken = getExpirationDateFromToken(token);
         return expirationDateFromToken.before(new Date());
     }

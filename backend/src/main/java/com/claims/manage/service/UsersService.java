@@ -34,7 +34,6 @@ public class UsersService {
           throw new NotFoundException("User not found");
       }
   }
-
   public Users getByUsername(String username) throws NotFoundException {
     Optional<Users> optionalUser = usersRepository.findUsersByUsername(username);
     if (optionalUser.isPresent()) {
@@ -51,18 +50,15 @@ public class UsersService {
         }
         return users;
     }
-
   public Users addUser(Users user) throws AlreadyExistsException {
     String pass = user.getPassword();
     String encode = this.passwordEncoder.encode(pass);
     user.setPassword(encode);
-
     // Check if user already exists
     Optional<Users> existingUser = usersRepository.findById(user.getId());
     if (existingUser.isPresent()) {
       throw new AlreadyExistsException("User already exists");
     }
-
     try {
       return usersRepository.save(user);
     } catch (DataIntegrityViolationException e) {
@@ -85,7 +81,6 @@ public class UsersService {
 //            .orElseThrow(() -> new NotFoundException("User does not exist"));
 //
 //  }
-
 
   public int sum(int a, int b){
     return (a+b);

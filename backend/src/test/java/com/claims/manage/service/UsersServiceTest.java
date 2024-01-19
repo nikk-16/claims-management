@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -25,7 +26,7 @@ import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 public class UsersServiceTest {
-    @Autowired
+//    @InjectMocks
     private UsersService usersService;
 
     @Mock
@@ -35,7 +36,7 @@ public class UsersServiceTest {
     private PasswordEncoder passwordEncoder;
 
     @Before
-    public void setup() throws NotFoundException {
+    public void setup() {
         usersService = Mockito.mock(UsersService.class);
         usersRepository = Mockito.mock(UsersRepository.class);
         passwordEncoder = Mockito.mock(PasswordEncoder.class);
@@ -43,10 +44,40 @@ public class UsersServiceTest {
     }
 
 
+//    @Test
+//    public void testGetByIdUserExists() throws NotFoundException {
+//        Users mockUser = new Users();
+//        mockUser.setId("659d55c67309f0470b070a83");
+//        when(usersRepository.findById("659d55c67309f0470b070a83")).thenReturn(Optional.of(mockUser));
+////        System.out.println(mockUser);
+//////        Users result;
+////        System.out.println(usersService.getById("659d55c67309f0470b070a83"));
+//        Users result = usersService.getById("659d55c67309f0470b070a83");
+////        System.out.println("Hello" + result.getId());
+////        System.out.println("659d55c67309f0470b070a83".equals(result.getId()));
+//        assertEquals("659d55c67309f0470b070a83", result.getId());
+//        verify(usersRepository, times(1)).findById("659d55c67309f0470b070a83");
+//    }
+//
+//    @Test
+//    public void testGetByUserIdNotExists() {
+//        when(usersRepository.findById("123")).thenReturn(Optional.empty());
+//
+//        Exception exception = assertThrows(NotFoundException.class, () -> {
+//            usersService.getById("123");
+//        });
+//        System.out.println(exception);
+//        String expectedMessage = "User not found";
+//        String actualMessage = exception.getMessage();
+//        System.out.println(actualMessage.contains(expectedMessage));
+//        assertTrue(actualMessage.contains(expectedMessage));
+//        verify(usersRepository, times(1)).findById(anyString());
+//    }
+
+
     @Test
     public void getById_UserExists_ReturnsUser() throws NotFoundException {
         Users expectedUser = new Users();
-//        UsersService usersService1 = new UsersService(this.usersRepository,this.passwordEncoder);
         expectedUser.setId("659d55c67309f0470b070a83");
         when(usersRepository.findById("659d55c67309f0470b070a83")).thenReturn(Optional.of(expectedUser));
 
@@ -56,49 +87,30 @@ public class UsersServiceTest {
 
     @Test
     public void getById_UserDoesNotExist_ThrowsNotFoundException() throws NotFoundException{
-//        when(usersRepository.findById("659d55c67309f0470b070a82")).thenReturn(Optional.empty());
-//
-//        assertThrows(NotFoundException.class, () -> {
-//            usersService.getById("659d55c67309f0470b070a82");
-//        });
-        String nonExistingUserId = "non-existing-user-id";
+        when(usersRepository.findById("659d55c67309f0470b070a82")).thenReturn(Optional.empty());
 
-        // Simulate that the user is not found
-        when(usersRepository.findById(nonExistingUserId)).thenReturn(Optional.empty());
-
-//        assertThrows(NotFoundException.class, () -> {
-//            // this should throw the NotFoundException
-//
-//        });
-
-        boolean exceptionThrown = false;
-
-        try{
-            Users actualUser = usersService.getById(nonExistingUserId);
-        }
-        catch(Exception ex){
-            exceptionThrown = true;
-        }
-
-        Assert.assertTrue(exceptionThrown);
+        assertThrows(NotFoundException.class, () -> {
+            usersService.getById("659d55c67309f0470b070a82");
+        });
     }
 
     @Test
     public void getByUsername_UserExists_ReturnsUser() throws NotFoundException {
         Users expectedUser = new Users();
-        expectedUser.setUsername("nikk");
-        when(usersRepository.findUsersByUsername("nikk")).thenReturn(Optional.of(expectedUser));
+        expectedUser.setUsername("nikhil");
+        when(usersRepository.findUsersByUsername("nikhil")).thenReturn(Optional.of(expectedUser));
 
-        Users actualUser = usersService.getByUsername("nikk");
+        Users actualUser = usersService.getByUsername("nikhil");
 
         assertEquals(expectedUser, actualUser);
+
     }
 
     @Test
     public void getByUsername_UserDoesNotExist_ThrowsNotFoundException() {
-        when(usersRepository.findUsersByUsername("nikk")).thenReturn(Optional.empty());
+        when(usersRepository.findUsersByUsername("hello")).thenReturn(Optional.empty());
 
-        assertThrows(NotFoundException.class, () -> usersService.getByUsername("nikk"));
+        assertThrows(NotFoundException.class, () -> usersService.getByUsername("hello"));
     }
 
     @Test

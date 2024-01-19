@@ -20,7 +20,7 @@ public class ClaimsController {
     private final ClaimsService claimsService;
 
     @PostMapping("/apply")
-    private ResponseEntity<?> applyForClaims(@RequestBody ApplyClaims claim) {
+    public ResponseEntity<?> applyForClaims(@RequestBody ApplyClaims claim) {
         try {
             return ResponseEntity.ok(claimsService.apply(claim));
         } catch (IllegalArgumentException e){

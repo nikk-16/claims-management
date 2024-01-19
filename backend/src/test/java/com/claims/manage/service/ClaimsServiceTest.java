@@ -40,42 +40,27 @@ public class ClaimsServiceTest {
         usersRepository = Mockito.mock(UsersRepository.class);
         this.claimsService = new ClaimsService(this.claimsRepository, this.usersRepository);
     }
-//
-//    @Test
-//    public void apply_ClaimIsNotNull_ReturnsClaim() throws IllegalArgumentException {
-//        ApplyClaims applyClaims = new ApplyClaims();
-//        Claims expectedClaim = new Claims();
-//        when(claimsRepository.save(any(Claims.class))).thenReturn(expectedClaim);
-//
-//        Claims actualClaim = claimsService.apply(applyClaims);
-//
-//        assertEquals(expectedClaim, actualClaim);
-//    }
-//
-//    @Test
-//    public void apply_ClaimIsNull_ThrowsIllegalArgumentException() {
-//        assertThrows(IllegalArgumentException.class, () -> claimsService.apply(null));
-//    }
-@Test
-public void apply_ClaimIsNotNull_ReturnsClaim() {
-    // given
-    ApplyClaims applyClaims = new ApplyClaims();
-    applyClaims.setName("testName");
-    applyClaims.setInsuranceType("testInsuranceType");
-    applyClaims.setClaimReason("testClaimReason");
-    applyClaims.setEstimatedAmount(100.00);
 
-    Claims expectedClaim = new Claims("testName", "testInsuranceType", "testClaimReason", 100.00);
-    expectedClaim.setStatus("Applied");
+    @Test
+    public void apply_ClaimIsNotNull_ReturnsClaim() {
+        // given
+        ApplyClaims applyClaims = new ApplyClaims();
+        applyClaims.setName("testName");
+        applyClaims.setInsuranceType("testInsuranceType");
+        applyClaims.setClaimReason("testClaimReason");
+        applyClaims.setEstimatedAmount(100.00);
 
-    when(claimsRepository.save(Mockito.any(Claims.class))).thenReturn(expectedClaim);
+        Claims expectedClaim = new Claims("testName", "testInsuranceType", "testClaimReason", 100.00);
+        expectedClaim.setStatus("Applied");
 
-    // when
-    Claims actualClaim = claimsService.apply(applyClaims);
+        when(claimsRepository.save(Mockito.any(Claims.class))).thenReturn(expectedClaim);
 
-    // then
-    assertEquals(expectedClaim, actualClaim);
-}
+        // when
+        Claims actualClaim = claimsService.apply(applyClaims);
+
+        // then
+        assertEquals(expectedClaim, actualClaim);
+    }
 
     @Test
     public void apply_ClaimIsNull_ThrowsIllegalArgumentException() {
