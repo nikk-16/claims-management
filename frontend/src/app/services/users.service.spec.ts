@@ -29,12 +29,12 @@ describe('UsersService', () => {
 
   it('getUserById should get user according to given id', () => {
     const result = [{ 'id': "123" }]
-    const id = "123";
+    const username = "testuser";
     httpClient.get.mockReturnValue(of(result));
-    service.getUserById(id).subscribe(response => {
+    service.getUserByUsername(username).subscribe(response => {
       expect(response).toEqual(result);
     })
-    expect(httpClient.get).toHaveBeenCalledWith(`${AppConstant.USERS_URI}/${id}`);
+    expect(httpClient.get).toHaveBeenCalledWith(`${AppConstant.USERS_URI}/user/${username}`);
   });
 
   it('signUp should post user data for registration', () => {
@@ -70,10 +70,10 @@ describe('UsersService', () => {
     const username = "meghana";
     const result = [{ 'username': username }]
     httpClient.get.mockReturnValue(of(result));
-    service.getUserById(username).subscribe(response => {
+    service.getUserByUsername(username).subscribe(response => {
       expect(response).toEqual(result);
     })
-    expect(httpClient.get).toHaveBeenCalledWith(`${AppConstant.USERS_URI}/${username}`);
+    expect(httpClient.get).toHaveBeenCalledWith(`${AppConstant.USERS_URI}/user/${username}`);
   });
 
   

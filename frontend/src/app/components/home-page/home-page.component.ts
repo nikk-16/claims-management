@@ -18,4 +18,15 @@ export class HomePageComponent {
       this.insurancePolicies=response;
     })
   }
+
+  //..example for testing global handler 
+  // ngOnInit() {
+  //   setTimeout(() => {
+  //     this.causeRuntimeError();
+  //   }, 1000);
+  // }
+  
+  // causeRuntimeError() {
+  //   const object = JSON.parse('{ bad json'); // This would throw a SyntaxError
+  //}
 }

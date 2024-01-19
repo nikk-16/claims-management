@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,7 @@ import { InsuranceCardComponent } from 'src/shared/shared-components/insurance-c
 import { ApplyClaimsCardComponent } from 'src/shared/shared-components/apply-claims-card/apply-claims-card.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { InsuranceDescriptionPageComponent } from 'src/shared/shared-components/insurance-description-page/insurance-description-page.component';
+import { GlobalErrorHandlerService } from './services/global-error-handler.service';
 
 
 @NgModule({
@@ -40,7 +41,11 @@ import { InsuranceDescriptionPageComponent } from 'src/shared/shared-components/
         ProfileComponent,
         InsuranceDescriptionPageComponent
     ],
-    providers: [{ provide: HTTP_INTERCEPTORS, useClass: ClaimsInterceptor, multi: true }],
+    providers: [{ provide: HTTP_INTERCEPTORS, useClass: ClaimsInterceptor, multi: true },
+        {
+            provide: ErrorHandler,
+            useClass: GlobalErrorHandlerService
+          }],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,

@@ -40,7 +40,7 @@ export class UsersService implements OnInit {
       username: username,
       password: password
     };
-    console.log(body)
+    //console.log(body)
     return this.http.post<any>(`http://localhost:8080/users/login`, body);
   }
   getUserByUsername(username: any) {

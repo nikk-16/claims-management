@@ -32,7 +32,7 @@ describe('InsurancesService', () => {
     service.getAllInsurancesByUsername(username).subscribe(response => {
       expect(response).toEqual(result);
     })
-    expect(httpClient.get).toHaveBeenCalledWith(`http://localhost:8080/insurance/${username}`)
+    expect(httpClient.get).toHaveBeenCalledWith(`${AppConstant.INSURANCE_URI}/user/${username}`)
   });
 
   it('applyForInsurance should post the data to insurance service', () => {

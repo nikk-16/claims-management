@@ -19,7 +19,7 @@ export class LoginPageComponent {
   }
   login(){
     this.userService.login(this.form.value.username,this.form.value.password).subscribe((response: any)=>{
-        console.log(response);
+        //console.log(response);
         localStorage.setItem('username',this.form.value.username);
         localStorage.setItem('token', response.token);
         this.router.navigate(['/home']);
