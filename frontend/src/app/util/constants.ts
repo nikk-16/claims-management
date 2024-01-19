@@ -18,6 +18,6 @@ export class AppConstant {
     // public static readonly EVENT_NOT_FOUND = 'No Events Found for the Claim ';
     // public static readonly DEFAULT_ERROR= 'Error from merlin backend';
    
-    private constructor() { }
+    //private constructor() { }
    
 }

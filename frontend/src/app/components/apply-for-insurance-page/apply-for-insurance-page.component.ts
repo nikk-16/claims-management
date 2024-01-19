@@ -25,12 +25,12 @@ export class ApplyForInsurancePageComponent {
   }
 
   insuranceRequest() {
-    console.log(this.form.value);
+    //console.log(this.form.value);
     this.form.value.endDate = formatDate(`${this.form.value.endDate}`, 'yyyy-MM-dd', 'en');
-    console.log(formatDate(`${this.form.value.endDate}`, 'yyyy-MM-dd', 'en'));
-    console.error(this.form.value);
+   // console.log(formatDate(`${this.form.value.endDate}`, 'yyyy-MM-dd', 'en'));
+    //console.error(this.form.value);
     this.insuranceService.applyForInsurance(this.form.value).subscribe(response => {
-      console.log(response);
+      //console.log(response);
     })
   }
 }

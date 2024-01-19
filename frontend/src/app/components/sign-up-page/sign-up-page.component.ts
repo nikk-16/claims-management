@@ -11,7 +11,7 @@ import { UsersService } from '../../services/users.service';
 export class SignUpPageComponent {
   form: any
   flag: boolean = true;
-  constructor(private fb: FormBuilder, private userService: UsersService, private router: Router) {
+  constructor(public fb: FormBuilder, private userService: UsersService, private router: Router) {
     this.form = this.fb.group({
       username: ['', Validators.required],
       mobile: ['', [Validators.required,Validators.pattern("^[0-9]*$"),

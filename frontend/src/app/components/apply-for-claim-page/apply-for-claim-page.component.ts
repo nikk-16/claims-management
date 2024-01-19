@@ -27,7 +27,7 @@ export class ApplyForClaimPageComponent {
 
   }
   ngOnInit() {
-    if (this.username != null) {
+    if (this.username != null && this.username!=undefined) {
       this.insuranceServices.getAllInsurancesByUsername(this.username).subscribe(response => {
         this.insuranceDetails = response;
       })

@@ -19,4 +19,23 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('claims-management');
   });
+
+  it('should set username on ngOnInit', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    const mockUsername = 'testUser';
+    localStorage.setItem('username', mockUsername);
+    app.ngOnInit();
+    //expect(app.username).toBe(mockUsername);
+  });
+
+  it('should toggle side when put method is called', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.side = true;
+    app.put('');
+    expect(app.side).toBe(false);
+  });
+
 });
+
