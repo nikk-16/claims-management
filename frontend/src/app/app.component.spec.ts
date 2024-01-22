@@ -1,11 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { Router } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('AppComponent', () => {
+  let router: Router
   beforeEach(() => TestBed.configureTestingModule({
     imports: [RouterTestingModule],
-    declarations: [AppComponent]
+    declarations: [AppComponent],
+    providers: [
+      { provide: Router, useValue: { events: of({}) } }
+    ]
   }));
 
   it('should create the app', () => {
@@ -35,6 +41,25 @@ describe('AppComponent', () => {
     app.side = true;
     app.put('');
     expect(app.side).toBe(false);
+  });
+
+  it('should subscribe to router events on init', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    const router = TestBed.inject(Router);
+    const spy = jest.spyOn(router.events, 'subscribe');
+    localStorage.setItem('username', 'testUsername');
+    app.ngOnInit();
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should set username from local storage on init', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    const expectedUsername = 'testUsername';
+    localStorage.setItem('username', expectedUsername);
+    app.ngOnInit();
+    expect(app.username).toEqual(expectedUsername);
   });
 
 });

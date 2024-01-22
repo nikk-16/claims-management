@@ -7,6 +7,6 @@ export class GlobalErrorHandlerService implements ErrorHandler{
 
   constructor() { }
   handleError(error: any): void {
-      console.log('error occured:------',error.message);
+      console.error('error occured:------',error.message);
   }
 }
