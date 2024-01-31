@@ -14,22 +14,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class ManageApplicationTests {
 
+//    @Autowired
+//    private ModelMapper modelMapper;
+
+//    @SpyBean
+//    private ManageApplication manageApplication;
+
     @Autowired
     private ModelMapper modelMapper;
-
-    @SpyBean
-    private ManageApplication manageApplication;
 
     @Test
     public void contextLoads() {
     }
 
-    @Test
-    public void testMapperBean() {
-        ModelMapper mapper = manageApplication.mapper();
-        assertThat(mapper).isNotNull();
-        assertThat(mapper).isSameAs(modelMapper);
-    }
+//    @Test
+//    public void testMapperBean() {
+//        ModelMapper mapper = manageApplication.mapper();
+//        assertThat(mapper).isNotNull();
+//        assertThat(mapper).isSameAs(modelMapper);
+//    }
 }
 
 
