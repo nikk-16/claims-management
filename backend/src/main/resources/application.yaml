@@ -3,3 +3,29 @@ spring:
     mongodb:
       uri: mongodb+srv://megha:meghana@cluster0.8nb4bbs.mongodb.net/?retryWrites=true&w=majority
       database: claims-management
+#springfox:
+#  documentation:
+#    swagger-ui:
+#      enabled=true:
+
+#server:
+#  port=8080
+
+#springdoc:
+#  swagger-ui:
+#    enabled: true
+#    layout: BaseLayout
+#    path: /swagger-ui.html
+#    operations-sorter: method
+#  api-docs:
+#    path: /api-docs
+#
+#logging:
+#  level:
+#    root: info
+#    org:
+#      springframework:
+#        web: info
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui
